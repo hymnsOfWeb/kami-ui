@@ -1,0 +1,21 @@
+{
+  "name": "@kami-ui/next-theme",
+  "version": "1.0.0",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "^14",
+    "eslint": "^8",
+    "@kami-ui/eslint-config": "*"
+  },
+  "peerDependencies": {
+    "react": "^17 | ^18 | ^19",
+    "react-dom": "^17 | ^18 | ^19",
+    "next": ">=12"
+  }
+}

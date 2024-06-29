@@ -1,0 +1,3 @@
+{
+  "extends": "@kami-ui/tsconfigs/next-theme.tsconfig.json"
+}
