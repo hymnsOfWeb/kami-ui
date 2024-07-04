@@ -8,7 +8,8 @@
   "license": "MIT",
   "workspaces": [
     "packages/*",
-    "app"
+    "app",
+    "storybook"
   ],
   "scripts": {
     "build": "turbo run build",

@@ -1,4 +1,5 @@
 import { defaultTheme } from "./defaults";
+import { stringTrimmer } from "./helpers";
 import type { ThemeObject } from "./types";
 
 const colorBuilder = (colors: ThemeObject["colors"]) => {
@@ -17,21 +18,17 @@ const colorBuilder = (colors: ThemeObject["colors"]) => {
   return vars;
 };
 
-const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
-  return ``;
-};
-
-const typographyBuilder = (typography: ThemeObject["typography"]) => {
+const typographyBuilder = (typography: NonNullable<ThemeObject["typography"]>) => {
   return ``;
 };
 
 export const themeBuilder = (theme: ThemeObject, mode?: string) => {
   if (!theme) return "";
 
-  const { colors: c, spacing: s, typography: t } = theme;
+  const { colors: c, typography: t } = theme;
   const colors = colorBuilder(c || defaultTheme.colors);
-  const spacing = spacingBuilder(s || defaultTheme.spacing);
-  const typography = typographyBuilder(t || defaultTheme.typography);
-  const formattedVars = `${mode ? `body.kami-ui-${mode.trim().replace(/\s/gm, "-")}` : `:root`}{${colors}${spacing}${typography}}`;
+  // const spacing = spacingBuilder(s || defaultTheme.spacing);
+  const typography = typographyBuilder(t || defaultTheme.typography || ({} as any));
+  const formattedVars = `${mode ? `body.kami-ui-${stringTrimmer(mode)}` : `:root`}{${colors}${typography}}`;
   return formattedVars;
 };

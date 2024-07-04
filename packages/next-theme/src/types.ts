@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 
-type ColorType = string | string[];
+export type ColorType = string | string[];
+export type OddStrArr = [string, string, string] | [string, string, string, string, string];
 
 export interface ColorsObject {
   primary: ColorType;
@@ -24,10 +25,19 @@ export interface ColorsObject {
   black?: ColorType;
 }
 
+export interface TypographyObject {
+  fontSizes: OddStrArr;
+  fontFamilies?: {
+    sans?: string;
+    serif?: string;
+    mono?: string;
+    cursive?: string;
+  };
+}
+
 export interface ThemeObject {
   colors: ColorsObject;
-  spacing?: {};
-  typography?: {};
+  typography?: TypographyObject;
 }
 
 export type ThemeProviderProps = PropsWithChildren<{
