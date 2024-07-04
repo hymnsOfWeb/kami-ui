@@ -1,0 +1,21 @@
+{
+  "name": "@kami-ui/rollup",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "main": "rollup.config.mjs",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/rollup-plugin-peer-deps-external": "^2.2.5",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tslib": "^2.6.3"
+  }
+}

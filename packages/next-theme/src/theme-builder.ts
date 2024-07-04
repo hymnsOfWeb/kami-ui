@@ -19,7 +19,7 @@ const colorBuilder = (colors: ThemeObject["colors"]) => {
 };
 
 const typographyBuilder = (typography: NonNullable<ThemeObject["typography"]>) => {
-  return ``;
+  return `${JSON.stringify(typography)}`;
 };
 
 export const themeBuilder = (theme: ThemeObject, mode?: string) => {

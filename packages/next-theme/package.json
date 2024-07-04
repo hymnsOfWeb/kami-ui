@@ -1,7 +1,13 @@
 {
   "name": "@kami-ui/next-theme",
   "version": "1.0.0",
-  "scripts": {},
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c rollup.config.mjs",
+    "dev": "rollup -c rollup.config.mjs -w"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -12,7 +18,8 @@
     "next": "^14",
     "eslint": "^8",
     "@kami-ui/eslint-config": "*",
-    "@kami-ui/tsconfigs": "*"
+    "@kami-ui/tsconfigs": "*",
+    "@kami-ui/rollup": "*"
   },
   "peerDependencies": {
     "react": "^17 | ^18 | ^19",
