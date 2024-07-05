@@ -6,6 +6,7 @@
     "@kami-ui/tsconfigs/next-theme.tsconfig.json"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "ES5",
     "forceConsistentCasingInFileNames": true,
     "jsxImportSource": "@emotion/react",
@@ -20,6 +21,7 @@
       "@pages/*": ["./pages/*"],
       "@hooks/*": ["./hooks/*"],
       "@styles/*": ["./styles/*"],
+      "@stories/*": ["./stories/*"],
       "@/*": ["./*"]
     },
     "noPropertyAccessFromIndexSignature": false,
