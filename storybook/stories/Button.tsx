@@ -20,7 +20,7 @@ interface ButtonProps {
   /**
    * Optional click handler
    */
-  onClick?: () => void;
+  onClick?: any;
 }
 
 /**

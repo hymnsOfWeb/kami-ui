@@ -24,9 +24,7 @@
       "@stories/*": ["./stories/*"],
       "@/*": ["./*"]
     },
-    "noPropertyAccessFromIndexSignature": false,
-    "ignoreDeprecations": "5.0",
-    "verbatimModuleSyntax": false
+    "jsx": "preserve"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

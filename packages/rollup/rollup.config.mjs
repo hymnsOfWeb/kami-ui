@@ -55,10 +55,10 @@ export const commonConfig = ({ tsConfigOpts: { outDir } }) => {
         requireReturnsDefault: "auto",
       }),
       external(),
-      terser(),
+      // terser(),
     ],
   };
   return forReturn;
 };
 
-export { dts };
+export { dts, terser };

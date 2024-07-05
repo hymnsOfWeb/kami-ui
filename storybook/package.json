@@ -37,7 +37,9 @@
     "@storybook/test": "^8.1.11",
     "eslint": "^8",
     "eslint-plugin-storybook": "^0.8.0",
-    "storybook": "^8.1.11",
-    "typescript": "^5"
+    "storybook": "^8.1.11"
+  },
+  "engines": {
+    "node": ">=18.18.0"
   }
 }
