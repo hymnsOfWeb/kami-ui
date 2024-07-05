@@ -4,6 +4,7 @@ import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import { dts } from "rollup-plugin-dts";
 import del from "rollup-plugin-delete";
+import terser from "@rollup/plugin-terser";
 
 /** @type {typescript.RollupTypescriptOptions} */
 export const tsOptions = {
@@ -54,6 +55,7 @@ export const commonConfig = ({ tsConfigOpts: { outDir } }) => {
         requireReturnsDefault: "auto",
       }),
       external(),
+      terser(),
     ],
   };
   return forReturn;
