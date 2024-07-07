@@ -1,13 +1,25 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import { themeBuilder } from "./theme-builder";
 import type { MultiThemeProviderProps } from "./types";
 import Head from "next/head";
 import useIsomorphicLayoutEffect from "./use-isomorphic-layout-effect";
-import { stringTrimmer } from "./helpers";
+import { stringTrimmer, themeValidator } from "./helpers";
 
-const ThemeContext = createContext<MultiThemeProviderProps["themes"]>([]);
+export const ThemeContext = createContext<{
+  themes: MultiThemeProviderProps["themes"];
+  disableConsole: boolean;
+}>({
+  themes: [],
+  disableConsole: false,
+});
 
-const MultiThemeProvider = ({ themes = [], injectInBody = false, children }: MultiThemeProviderProps) => {
+const MultiThemeProvider = ({
+  themes = [],
+  injectInBody = false,
+  disableConsole = false,
+  children,
+}: MultiThemeProviderProps) => {
+  themeValidator(themes);
   const styles = themes.map(({ name, theme }) => themeBuilder(theme, name)).join("");
   const styleElem = <style id="kami-ui-styles" dangerouslySetInnerHTML={{ __html: styles }} />;
 
@@ -26,31 +38,11 @@ const MultiThemeProvider = ({ themes = [], injectInBody = false, children }: Mul
   }, []);
 
   return (
-    <ThemeContext.Provider value={themes}>
+    <ThemeContext.Provider value={{ themes, disableConsole }}>
       {injectInBody ? <>{styleElem}</> : <Head>{styleElem}</Head>}
       {children}
     </ThemeContext.Provider>
   );
 };
 
-const useTheme = ({ disableConsole = false }: { disableConsole?: boolean } = { disableConsole: false }) => {
-  const themes = useContext(ThemeContext);
-  const updateTheme = (themeName: string) => {
-    if (!(document && themeName)) return;
-    const theme = themes.find(({ name }) => name === themeName);
-    if (!theme) {
-      if (!disableConsole) console.warn(`Theme ${themeName} not found`);
-      return;
-    }
-    for (const bodyClass of Array.from(document.body.classList)) {
-      if (bodyClass.startsWith("kami-ui-")) {
-        document.body.classList.remove(bodyClass);
-        break;
-      }
-    }
-    document.body.classList.add(`kami-ui-${stringTrimmer(themeName)}`);
-  };
-  return { updateTheme };
-};
-
-export { MultiThemeProvider, useTheme };
+export { MultiThemeProvider };

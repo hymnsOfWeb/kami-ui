@@ -52,4 +52,5 @@ export type MultiThemeProviderProps = PropsWithChildren<{
     theme: ThemeObject;
   }[];
   injectInBody?: boolean;
+  disableConsole?: boolean;
 }>;
