@@ -45,3 +45,4 @@ package-lock.json
 dist
 
 *storybook.log
+storybook-static

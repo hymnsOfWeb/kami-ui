@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const HomeWrapper = styled.div`
   background-color: var(--color-primary-400);

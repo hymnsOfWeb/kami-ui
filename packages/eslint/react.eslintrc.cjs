@@ -1,7 +1,6 @@
 module.exports = {
   extends: [
-    "./.eslintrc-base.cjs",
-    "plugin:@next/next/recommended",
+    "./base.eslintrc.cjs",
     "airbnb",
     "airbnb-typescript",
     "airbnb/hooks",

@@ -1,3 +1,7 @@
 module.exports = {
-  extends: ["@kami-ui/eslint-config/.eslintrc-react.cjs"],
+  extends: ["@kami-ui/eslint-config/react.eslintrc.cjs"],
+  parserOptions: {
+    project: "./tsconfig.json",
+    tsconfigRootDir: __dirname,
+  },
 };

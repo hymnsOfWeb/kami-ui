@@ -6,8 +6,9 @@ module.exports = {
     "plugin:@typescript-eslint/recommended-type-checked",
     "airbnb-base",
     "airbnb-typescript/base",
+    "prettier",
   ],
-  ignorePatterns: ["dist", ".eslintrc*.cjs", "node_modules"],
+  ignorePatterns: [".eslintrc*.cjs", "node_modules", "dist"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2020,

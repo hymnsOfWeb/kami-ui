@@ -6,8 +6,8 @@
     "dev:next": "next dev",
     "build:next": "next build",
     "start": "next start",
-    "lint": "prettier --config .prettierrc \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\"",
-    "lint:fix": "prettier --config .prettierrc \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --fix",
+    "lint": "prettier \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\"",
+    "lint:fix": "prettier \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --fix",
     "dev:storybook": "storybook dev -p 6006",
     "dev": "yarn dev:next",
     "build": "storybook build"
