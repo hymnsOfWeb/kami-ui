@@ -14,4 +14,14 @@ module.exports = {
     ecmaVersion: 2020,
   },
   plugins: ["prettier"],
+  rules: {
+    "node/no-missing-import": [
+      "error",
+      {
+        allowModules: [],
+        resolvePaths: [],
+        tryExtensions: [".ts", ".tsx", ".js", ".jsx"],
+      },
+    ],
+  },
 };

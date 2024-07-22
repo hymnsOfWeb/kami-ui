@@ -23,9 +23,7 @@ export const useTheme = () => {
     }
     document.body.classList.add(`kami-ui-${stringTrimmer(themeName)}`);
   };
-  const getTheme = (themeName: string | undefined) => {
-    return themes.find(({ name }) => name === themeName);
-  };
+  const getTheme = (themeName: string | undefined) => themes.find(({ name }) => name === themeName);
   const getColor = (color: keyof ColorsObject, index: number) => {
     try {
       const currentBodyClass = Array.from(document.body.classList).find((bodyClass) =>

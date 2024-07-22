@@ -2,7 +2,7 @@ import { useTheme } from "@kami-ui/next-theme";
 import { HomeWrapper } from "@modules/home/styles";
 import { HomeProps } from "@modules/home/types";
 
-export default function Home({ className }: HomeProps) {
+const Home = ({ className }: HomeProps) => {
   const { updateTheme } = useTheme();
   return (
     <HomeWrapper className={className}>
@@ -15,4 +15,6 @@ export default function Home({ className }: HomeProps) {
       </button>
     </HomeWrapper>
   );
-}
+};
+
+export default Home;

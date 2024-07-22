@@ -3,9 +3,7 @@ import { Global } from "@emotion/react";
 import globalStyles from "@styles/global";
 import { MultiThemeProvider, MultiThemeProviderProps } from "@kami-ui/next-theme";
 
-export function GlobalStyles() {
-  return <Global styles={globalStyles} />;
-}
+export const GlobalStyles = () => <Global styles={globalStyles} />;
 export const themeObj: MultiThemeProviderProps["themes"] = [
   {
     name: "light",
@@ -29,11 +27,11 @@ export const themeObj: MultiThemeProviderProps["themes"] = [
   },
 ];
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <MultiThemeProvider themes={themeObj}>
-      <GlobalStyles />
-      <Component {...pageProps} />
-    </MultiThemeProvider>
-  );
-}
+const App = ({ Component, pageProps }: AppProps) => (
+  <MultiThemeProvider themes={themeObj}>
+    <GlobalStyles />
+    <Component {...pageProps} />
+  </MultiThemeProvider>
+);
+
+export default App;

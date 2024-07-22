@@ -1,10 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": [
-    "@tsconfig/strictest/tsconfig.json",
-    "@tsconfig/next/tsconfig.json",
-    "@kami-ui/tsconfigs/next-theme.tsconfig.json"
-  ],
+  "extends": ["@tsconfig/next/tsconfig.json", "@kami-ui/tsconfigs/next-theme.tsconfig.json"],
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ES5",

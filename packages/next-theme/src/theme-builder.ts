@@ -1,9 +1,9 @@
-import { defaultTheme } from "./defaults";
 import { stringTrimmer } from "./helpers";
 import type { ThemeObject } from "./types";
 
 const colorBuilder = (colorsProp: ThemeObject["colors"]) => {
   let vars = "";
+  if (!colorsProp) return vars;
   const colors: ThemeObject["colors"] = {
     white: "#fff",
     black: "#000",
@@ -47,7 +47,7 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
 export const themeBuilder = (theme: ThemeObject, mode?: string) => {
   if (!theme) return "";
   const { colors: c, typography: t } = theme;
-  const colors = colorBuilder(c || defaultTheme.colors);
+  const colors = colorBuilder(c);
   // const spacing = spacingBuilder(s || defaultTheme.spacing);
   const typography = typographyBuilder(t);
   const formattedVars = `${mode ? `body.kami-ui-${stringTrimmer(mode)}` : `:root`}{${colors}${typography}}`;

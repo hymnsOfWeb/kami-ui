@@ -1,8 +1,7 @@
 {
   "name": "@kami-ui/tsconfigs",
   "version": "1.0.0",
-  "scripts": {},
-  "keywords": [],
+  "private": true,
   "author": "",
   "license": "ISC",
   "description": "",

@@ -1,5 +1,5 @@
 {
-  "name": "@kami-ui/next-theme",
+  "name": "@kami-ui/theme-defaults",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -17,23 +17,21 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@kami-ui/next-theme": "*",
     "@kami-ui/eslint-config": "*",
     "@kami-ui/rollup": "*",
-    "@kami-ui/tsconfigs": "*",
-    "eslint": "^8",
-    "next": "^14",
-    "react": "^18",
-    "react-dom": "^18"
+    "@kami-ui/tsconfigs": "*"
   },
   "peerDependencies": {
-    "next": ">=12",
-    "react": "^17 | ^18 | ^19",
-    "react-dom": "^17 | ^18 | ^19"
+    "@kami-ui/next-theme": "*",
+    "@kami-ui/react-theme": "*"
   },
-  "engines": {
-    "node": ">=16"
-  },
-  "files": [
-    "dist"
-  ]
+  "peerDependenciesMeta": {
+    "@kami-ui/next-theme": {
+      "optional": true
+    },
+    "@kami-ui/react-theme": {
+      "optional": true
+    }
+  }
 }

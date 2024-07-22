@@ -1,7 +1,7 @@
 import { createContext } from "react";
+import Head from "next/head";
 import { themeBuilder } from "./theme-builder";
 import type { MultiThemeProviderProps } from "./types";
-import Head from "next/head";
 import useIsomorphicLayoutEffect from "./use-isomorphic-layout-effect";
 import { stringTrimmer, themeValidator } from "./helpers";
 
@@ -37,9 +37,13 @@ const MultiThemeProvider = ({
     }
   }, []);
 
+  // disabling eslint rule for this line because useMemo is not needed here as the value is coming from the props.
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const value = { themes, disableConsole };
+
   return (
-    <ThemeContext.Provider value={{ themes, disableConsole }}>
-      {injectInBody ? <>{styleElem}</> : <Head>{styleElem}</Head>}
+    <ThemeContext.Provider value={value}>
+      {injectInBody ? styleElem : <Head>{styleElem}</Head>}
       {children}
     </ThemeContext.Provider>
   );
