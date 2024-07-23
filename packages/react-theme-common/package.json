@@ -1,0 +1,30 @@
+{
+  "name": "@kami-ui/react-theme-common",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "prebuild": "yarn lint:fix",
+    "build": "rollup -c rollup.config.mjs",
+    "dev": "rollup -c rollup.config.mjs && node ./scripts/watch.cjs",
+    "lint": "prettier \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --write && eslint \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts",
+    "lint:fix": "prettier \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --write && eslint \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@kami-ui/eslint-config": "*",
+    "@kami-ui/tsconfigs": "*",
+    "eslint": "^8",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

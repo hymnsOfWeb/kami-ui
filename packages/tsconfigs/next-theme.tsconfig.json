@@ -7,26 +7,9 @@
     "allowJs": true,
     "jsx": "react-jsx",
     "removeComments": false,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
     "alwaysStrict": true,
-
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    
+
     "declaration": true
   }
 }

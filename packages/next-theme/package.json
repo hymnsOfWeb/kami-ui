@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "yarn lint:fix",
     "build": "rollup -c rollup.config.mjs",
-    "dev": "yarn build && node ./scripts/watch.cjs",
+    "dev": "rollup -c rollup.config.mjs && node ./scripts/watch.cjs",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
@@ -20,6 +20,7 @@
     "@kami-ui/eslint-config": "*",
     "@kami-ui/rollup": "*",
     "@kami-ui/tsconfigs": "*",
+    "@kami-ui/react-theme-common": "*",
     "eslint": "^8",
     "next": "^14",
     "react": "^18",

@@ -20,8 +20,12 @@ module.exports = {
       {
         allowModules: [],
         resolvePaths: [],
-        tryExtensions: [".ts", ".tsx", ".js", ".jsx"],
+        tryExtensions: [".ts", ".tsx", ".js", ".jsx", "./index.ts", "./index.tsx", "./index.js", "./index.jsx"],
       },
     ],
+    "no-restricted-syntax": "off",
+    "no-plusplus": "off",
+    "guard-for-in": "off",
+    "no-continue": "off",
   },
 };

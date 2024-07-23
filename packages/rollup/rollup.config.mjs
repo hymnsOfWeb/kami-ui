@@ -5,6 +5,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import { dts } from "rollup-plugin-dts";
 import del from "rollup-plugin-delete";
 import terser from "@rollup/plugin-terser";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
 
 /** @type {typescript.RollupTypescriptOptions} */
 export const tsOptions = {
@@ -18,6 +20,10 @@ export const externalPackages = [
   "@emotion/react/jsx-runtime",
   "react",
   "react-dom",
+  "react",
+  "react/jsx-runtime",
+  "@types/react",
+  "@types/react/jsx-runtime",
   "colord",
   "shade-generator",
   "next",
@@ -36,20 +42,31 @@ export const dtsCommonOptions = {
     baseUrl: ".",
     paths: {},
   },
+  respectExternal: true,
+  fixExternal: true,
 };
 
-export const dtsCommonPlugins = [dts(dtsCommonOptions)];
+export const dtsCommonPlugins = [
+  dts(dtsCommonOptions),
+  nodeResolve({
+    modulePaths: [resolve(dirname(fileURLToPath(import.meta.url)), "../")],
+    mainFields: ["module", "main", "types"],
+    moduleDirectories: ["node_modules", "packages"],
+  }),
+];
 
-export const commonConfig = ({ tsConfigOpts: { outDir } }) => {
+export const commonConfig = ({ tsConfigOpts: { outDir, ...restTsOpts } }) => {
   const finalExternalPackages = [...externalPackages];
   /** @type {import('rollup').RollupOptions} */
   const forReturn = {
     external: finalExternalPackages,
     plugins: [
       nodeResolve({
-        modulePaths: ["node_modules", "packages/", "../packages/"],
+        modulePaths: [resolve(dirname(fileURLToPath(import.meta.url)), "../")],
+        mainFields: ["module", "main", "types"],
+        moduleDirectories: ["node_modules", "packages"],
       }),
-      typescript({ ...tsOptions, outDir: outDir }),
+      typescript({ ...tsOptions, outDir: outDir, ...restTsOpts }),
       commonjs({
         include: /node_modules|packages/,
         requireReturnsDefault: "auto",
@@ -61,4 +78,4 @@ export const commonConfig = ({ tsConfigOpts: { outDir } }) => {
   return forReturn;
 };
 
-export { dts, terser };
+export { dts, terser, nodeResolve, commonjs };

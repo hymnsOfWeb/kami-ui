@@ -20,7 +20,8 @@
     "@kami-ui/next-theme": "*",
     "@kami-ui/eslint-config": "*",
     "@kami-ui/rollup": "*",
-    "@kami-ui/tsconfigs": "*"
+    "@kami-ui/tsconfigs": "*",
+    "eslint": "^8"
   },
   "peerDependencies": {
     "@kami-ui/next-theme": "*",

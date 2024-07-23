@@ -2,10 +2,31 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": ["@tsconfig/strictest/tsconfig.json"],
   "compilerOptions": {
-    "target": "ES5",
+    "target": "esnext",
     "forceConsistentCasingInFileNames": true,
     "noPropertyAccessFromIndexSignature": false,
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false,
+    "lib": ["es6", "es7", "esnext"],
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+
+    "declaration": true
   },
   "exclude": ["node_modules"]
 }

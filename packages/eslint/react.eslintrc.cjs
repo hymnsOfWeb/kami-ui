@@ -9,10 +9,10 @@ module.exports = {
       },
     ],
     "react/react-in-jsx-scope": "off",
-    "no-plusplus": "off",
-    "no-restricted-syntax": "off",
-    "guard-for-in": "off",
     "react-hooks/exhaustive-deps": "warn",
+    "no-restricted-syntax": "off",
+    "no-plusplus": "off",
+    "guard-for-in": "off",
     "no-continue": "off",
   },
 };

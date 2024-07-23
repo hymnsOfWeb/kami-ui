@@ -1,6 +1,5 @@
+import { themeBuilder, type ThemeProviderProps } from "@kami-ui/react-theme-common";
 import Head from "next/head";
-import { themeBuilder } from "./theme-builder";
-import { ThemeProviderProps } from "./types";
 
 export const ThemeProvider = ({ injectInBody = false, theme, mode, children }: ThemeProviderProps) => {
   const styles = themeBuilder(theme, mode);

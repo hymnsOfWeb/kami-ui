@@ -1,7 +1,19 @@
-import { commonConfig, dtsCommonPlugins, dtsDelete } from "@kami-ui/rollup";
+import { commonConfig, dtsCommonPlugins, dtsDelete, externalPackages } from "@kami-ui/rollup";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 
 const outputFolder = "dist";
-const config = commonConfig({ tsConfigOpts: { outDir: outputFolder } });
+const config = commonConfig({
+  tsConfigOpts: {
+    outDir: outputFolder,
+    compilerOptions: {
+      baseUrl: ".",
+      paths: {
+        "@kami-ui/react-theme-common": ["../../react-theme-common/dist/index.d.ts"],
+      },
+    },
+  },
+});
 
 /** @type {import("rollup").RollupOptions} */
 const themeConfig = [
@@ -27,7 +39,8 @@ const themeConfig = [
       file: `${outputFolder}/index.d.ts`,
       format: "esm",
     },
-    plugins: [...dtsCommonPlugins, dtsDelete(["dist/**/*.d.ts", "!dist/index.d.ts"])],
+    plugins: [...dtsCommonPlugins, dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.d.ts"])],
+    external: externalPackages,
   },
 ];
 

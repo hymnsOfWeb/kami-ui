@@ -1,11 +1,11 @@
 import { useContext } from "react";
+import { type ColorsObject, stringTrimmer } from "@kami-ui/react-theme-common";
 import { ThemeContext } from "./multi-theme-provider";
-import { stringTrimmer } from "./helpers";
-import { ColorsObject } from "./types";
 
 export const useTheme = () => {
   const { themes, disableConsole } = useContext(ThemeContext);
   const warn = (message: string) => {
+    // eslint-disable-next-line no-console
     if (!disableConsole) console.warn(message);
   };
   const updateTheme = (themeName: string) => {

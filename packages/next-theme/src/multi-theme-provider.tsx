@@ -1,9 +1,12 @@
 import { createContext } from "react";
 import Head from "next/head";
-import { themeBuilder } from "./theme-builder";
-import type { MultiThemeProviderProps } from "./types";
-import useIsomorphicLayoutEffect from "./use-isomorphic-layout-effect";
-import { stringTrimmer, themeValidator } from "./helpers";
+import {
+  stringTrimmer,
+  themeBuilder,
+  themeValidator,
+  useIsomorphicLayoutEffect,
+  type MultiThemeProviderProps,
+} from "@kami-ui/react-theme-common";
 
 export const ThemeContext = createContext<{
   themes: MultiThemeProviderProps["themes"];
