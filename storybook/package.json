@@ -9,8 +9,8 @@
     "lint": "prettier \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --fix",
     "dev:storybook": "storybook dev -p 6006",
-    "dev": "yarn dev:next",
-    "build": "storybook build"
+    "dev": "yarn dev:storybook",
+    "build:story": "storybook build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

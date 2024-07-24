@@ -46,36 +46,49 @@ export const dtsCommonOptions = {
   fixExternal: true,
 };
 
-export const dtsCommonPlugins = [
-  dts(dtsCommonOptions),
-  nodeResolve({
-    modulePaths: [resolve(dirname(fileURLToPath(import.meta.url)), "../")],
-    mainFields: ["module", "main", "types"],
-    moduleDirectories: ["node_modules", "packages"],
-  }),
-];
-
-export const commonConfig = ({ tsConfigOpts: { outDir, ...restTsOpts } }) => {
-  const finalExternalPackages = [...externalPackages];
-  /** @type {import('rollup').RollupOptions} */
-  const forReturn = {
-    external: finalExternalPackages,
-    plugins: [
+export const getDtsCommonPlugins = (resolveNode = true) => {
+  const plugins = [dts(dtsCommonOptions)];
+  if (resolveNode) {
+    plugins.unshift(
       nodeResolve({
         modulePaths: [resolve(dirname(fileURLToPath(import.meta.url)), "../")],
         mainFields: ["module", "main", "types"],
         moduleDirectories: ["node_modules", "packages"],
       }),
-      typescript({ ...tsOptions, outDir: outDir, ...restTsOpts }),
-      commonjs({
-        include: /node_modules|packages/,
-        requireReturnsDefault: "auto",
+    );
+  }
+  return plugins;
+};
+
+export const commonConfig = ({ tsConfigOpts: { outDir, ...restTsOpts }, resolveNode = true }) => {
+  const finalExternalPackages = [...externalPackages];
+
+  /** @type {import('rollup').RollupOptions["plugins"]} */
+  const plugins = [
+    typescript({ ...tsOptions, outDir: outDir, ...restTsOpts }),
+    commonjs({
+      include: /node_modules|packages/,
+      requireReturnsDefault: "auto",
+    }),
+    external(),
+    // terser(),
+  ];
+  if (resolveNode) {
+    plugins.unshift(
+      nodeResolve({
+        modulePaths: [resolve(dirname(fileURLToPath(import.meta.url)), "../")],
+        mainFields: ["module", "main", "types"],
+        moduleDirectories: ["node_modules", "packages"],
       }),
-      external(),
-      // terser(),
-    ],
+    );
+  }
+
+  /** @type {import('rollup').RollupOptions} */
+  const config = {
+    external: finalExternalPackages,
+    plugins,
   };
-  return forReturn;
+  return config;
 };
 
 export { dts, terser, nodeResolve, commonjs };

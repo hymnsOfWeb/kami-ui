@@ -1,7 +1,7 @@
-import { commonConfig, dtsCommonPlugins, dtsDelete } from "@kami-ui/rollup";
+import { commonConfig, getDtsCommonPlugins, dtsDelete, externalPackages } from "@kami-ui/rollup";
 
 const outputFolder = "dist";
-const config = commonConfig({ tsConfigOpts: { outDir: outputFolder } });
+const config = commonConfig({ tsConfigOpts: { outDir: outputFolder }, resolveNode: false });
 
 /** @type {import("rollup").RollupOptions} */
 const themeConfig = [
@@ -27,7 +27,8 @@ const themeConfig = [
       file: `${outputFolder}/index.d.ts`,
       format: "esm",
     },
-    plugins: [...dtsCommonPlugins, dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.*{d.ts,js}"])],
+    plugins: [getDtsCommonPlugins(false), dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.*{d.ts,js}"])],
+    external: externalPackages,
   },
 ];
 

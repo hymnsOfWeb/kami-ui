@@ -12,7 +12,6 @@
     "storybook"
   ],
   "scripts": {
-    "prebuild": "yarn && yarn lint:fix",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
