@@ -39,7 +39,7 @@ const themeConfig = [
       file: `${outputFolder}/index.d.ts`,
       format: "esm",
     },
-    plugins: [...getDtsCommonPlugins(), dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.d.ts"])],
+    plugins: [...getDtsCommonPlugins(), dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.*{d.ts,js}"])],
     external: externalPackages,
   },
 ];

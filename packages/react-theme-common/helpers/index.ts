@@ -13,7 +13,7 @@ export const themeValidator = (themes: MultiThemeProviderProps["themes"]) => {
     const currColorKeys = JSON.stringify(Object.keys(colors).sort());
     const keyCheck = colorKeys.length === 0 ? colorKeys.push(currColorKeys) : colorKeys[0] !== currColorKeys;
     if (keyCheck === true) {
-      throw new Error(`Inavlid theme config: Themes have different color keys;`);
+      throw new Error(`Invalid theme config: Themes have different color keys;`);
     }
     if (checkedNames.includes(name)) {
       throw new Error(`Theme name ${name} is duplicated`);
@@ -26,7 +26,7 @@ export const themeValidator = (themes: MultiThemeProviderProps["themes"]) => {
           color as ColorKey
         ]?.length;
         if (checkedLen !== length) {
-          throw new Error(`Inavlid theme config: Themes have different lengths of color ${color};`);
+          throw new Error(`Invalid theme config: Themes have different lengths of color ${color};`);
         }
       }
     }

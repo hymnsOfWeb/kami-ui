@@ -21,6 +21,7 @@
     "@kami-ui/eslint-config": "*",
     "@kami-ui/rollup": "*",
     "@kami-ui/tsconfigs": "*",
+    "@kami-ui/react-theme-common": "*",
     "eslint": "^8"
   },
   "peerDependencies": {

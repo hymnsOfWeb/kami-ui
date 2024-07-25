@@ -21,6 +21,9 @@
     "@kami-ui/react-theme": {
       "dependsOn": ["@kami-ui/react-theme-common#build"]
     },
+    "@kami-ui/theme-shop": {
+      "dependsOn": ["@kami-ui/react-theme-common#build"]
+    },
     "@kami-ui/storybook": {
       "dependsOn": ["@kami-ui/next-theme#build"]
     }
