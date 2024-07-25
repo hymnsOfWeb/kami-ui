@@ -1,5 +1,5 @@
 import { stringTrimmer } from "../helpers";
-import type { ThemeObject } from "../types";
+import type { BreakpointSize, FontSizeArray, ThemeObject } from "../types";
 
 const colorBuilder = (colorsProp: ThemeObject["colors"]) => {
   let vars = "";
@@ -33,13 +33,60 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
     }
   }
   const len = fontSizes?.length;
-  if (!len) return vars;
-  if (len > 5) fontSizes.splice(0, 5);
-  if (len > 3 && len < 5) fontSizes.splice(0, 3);
-  if (len < 3) return vars;
-  const sizes = ["xs", "s", "m", "l", "xl"];
-  for (let i = 0; i < len; i++) {
-    vars += `--font-size-${sizes[i + (len === 3 ? 1 : 0)]}:${fontSizes[i]}`;
+  if (!len && typeof fontSizes === "object") return vars;
+  const sizeArr = ["4xs", "3xs", "2xs", "1xs", "s", "m", "l", "1xl", "2xl", "3xl", "4xl"];
+  const getSizeArStart = (fontSizeLength: number): number => {
+    switch (fontSizeLength) {
+      case 7:
+        return 2;
+      case 9:
+        return 1;
+      case 11:
+        return 0;
+      default:
+        return 0;
+    }
+  };
+  switch (typeof fontSizes[0]) {
+    case "string":
+      try {
+        for (let i = 0; i < len; i++) {
+          vars += `--font-size-${sizeArr[i + getSizeArStart(len)]}:${fontSizes[i] as string};`;
+        }
+      } catch {
+        // todo
+      }
+      break;
+    case "object":
+      try {
+        for (const { breakpoint, size } of fontSizes as BreakpointSize<FontSizeArray>[]) {
+          vars += "@media only screen ";
+          if (breakpoint?.min) {
+            vars += `and (min-width:${breakpoint.min}) `;
+          }
+          if (breakpoint?.max) {
+            vars += `and (max-width:${breakpoint.max}) `;
+          }
+          if (breakpoint?.orientation) {
+            vars += `and (orientation:${breakpoint.orientation}) `;
+          }
+          vars += "{";
+          try {
+            for (let i = 0; i < size.length; i++) {
+              vars += `--font-size-${sizeArr[i + getSizeArStart(size.length)]}:${size[i]};`;
+            }
+          } catch {
+            // todo
+          }
+          vars += "}";
+        }
+      } catch {
+        // todo
+      }
+      break;
+    default:
+      // todo
+      break;
   }
   return vars;
 };
