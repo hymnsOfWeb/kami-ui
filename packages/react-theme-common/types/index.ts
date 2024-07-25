@@ -80,7 +80,7 @@ export interface TypographyObject {
   };
 }
 
-type BorderRadiusArray = String3Array | String5Array | String7Array;
+export type BorderRadiusArray = String3Array | String5Array | String7Array;
 
 export interface SpacingObject {
   /**

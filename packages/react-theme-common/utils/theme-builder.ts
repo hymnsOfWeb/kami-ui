@@ -1,5 +1,5 @@
 import { stringTrimmer } from "../helpers";
-import type { BreakpointSize, FontSizeArray, ThemeObject } from "../types";
+import type { BorderRadiusArray, BreakpointSize, FontSizeArray, ThemeObject } from "../types";
 
 const colorBuilder = (colorsProp: ThemeObject["colors"]) => {
   let vars = "";
@@ -51,7 +51,7 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
     case "string":
       try {
         for (let i = 0; i < len; i++) {
-          vars += `--font-size-${sizeArr[i + getSizeArStart(len)]}:${fontSizes[i] as string};`;
+          vars += `--fs-${sizeArr[i + getSizeArStart(len)]}:${fontSizes[i] as string};`;
         }
       } catch {
         // todo
@@ -73,7 +73,135 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
           vars += "{";
           try {
             for (let i = 0; i < size.length; i++) {
-              vars += `--font-size-${sizeArr[i + getSizeArStart(size.length)]}:${size[i]};`;
+              vars += `--fs-${sizeArr[i + getSizeArStart(size.length)]}:${size[i]};`;
+            }
+          } catch {
+            // todo
+          }
+          vars += "}";
+        }
+      } catch {
+        // todo
+      }
+      break;
+    default:
+      // todo
+      break;
+  }
+  return vars;
+};
+
+const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
+  let vars = "";
+  if (!spacing) return vars;
+  if (spacing?.borderRadius) {
+    const sizeArr = ["2xs", "1xs", "s", "m", "l", "1xl", "2xl"];
+    const br = spacing.borderRadius;
+    const getSizeArStart = (fontSizeLength: number): number => {
+      switch (fontSizeLength) {
+        case 3:
+          return 2;
+        case 5:
+          return 1;
+        case 7:
+          return 0;
+        default:
+          return 0;
+      }
+    };
+    const len = br.length;
+    switch (br[0]) {
+      case "string":
+        try {
+          for (let i = 0; i < len; i++) {
+            vars += `--br-${sizeArr[i + getSizeArStart(len)]}:${br[i] as string};`;
+          }
+        } catch {
+          // todo
+        }
+        break;
+      case "object":
+        try {
+          for (const { breakpoint, size } of br as BreakpointSize<BorderRadiusArray>[]) {
+            vars += "@media only screen ";
+            if (breakpoint?.min) {
+              vars += `and (min-width:${breakpoint.min}) `;
+            }
+            if (breakpoint?.max) {
+              vars += `and (max-width:${breakpoint.max}) `;
+            }
+            if (breakpoint?.orientation) {
+              vars += `and (orientation:${breakpoint.orientation}) `;
+            }
+            vars += "{";
+            try {
+              for (let i = 0; i < size.length; i++) {
+                vars += `--br-${sizeArr[i + getSizeArStart(size.length)]}:${size[i]};`;
+              }
+            } catch {
+              // todo
+            }
+            vars += "}";
+          }
+        } catch {
+          // todo
+        }
+        break;
+      default:
+        // todo
+        break;
+    }
+  }
+  const defaultSpacing = [
+    "0px",
+    "2px",
+    "4px",
+    "8px",
+    "12px",
+    "16px",
+    "20px",
+    "24px",
+    "28px",
+    "32px",
+    "36px",
+    "40px",
+    "44px",
+    "48px",
+    "52px",
+    "64px",
+    "72px",
+    "80px",
+    "88px",
+    "96px",
+  ];
+  const { space = defaultSpacing } = spacing;
+  switch (typeof space[0]) {
+    case "string":
+      try {
+        for (let i = 0; i < space.length; i++) {
+          vars += `--space-${i}:${space[i] as string};`;
+        }
+      } catch {
+        // todo
+      }
+      break;
+    case "object":
+      try {
+        for (const { breakpoint, size } of space as BreakpointSize<string[]>[]) {
+          vars += "@media only screen ";
+          if (breakpoint?.min) {
+            vars += `and (min-width:${breakpoint.min}) `;
+          }
+          if (breakpoint?.max) {
+            vars += `and (max-width:${breakpoint.max}) `;
+          }
+          if (breakpoint?.orientation) {
+            vars += `and (orientation:${breakpoint.orientation}) `;
+          }
+          vars += "{";
+          try {
+            for (let i = 0; i < size.length; i++) {
+              vars += `--space-${i}:${size[i]};`;
             }
           } catch {
             // todo
@@ -93,11 +221,11 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
 
 const themeBuilder = (theme: ThemeObject, mode?: string): string => {
   if (!theme) return "";
-  const { colors: c, typography: t } = theme;
+  const { colors: c, typography: t, spacing: s } = theme;
   const colors = colorBuilder(c);
-  // const spacing = spacingBuilder(s || defaultTheme.spacing);
+  const spacing = spacingBuilder(s);
   const typography = typographyBuilder(t);
-  const formattedVars = `${mode ? `body.kami-ui-${stringTrimmer(mode)}` : `:root`}{${colors}${typography}}`;
+  const formattedVars = `${mode ? `body.kami-ui-${stringTrimmer(mode)}` : `:root`}{${colors}${typography}${spacing}}`;
   return formattedVars;
 };
 
