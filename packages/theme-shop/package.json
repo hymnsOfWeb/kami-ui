@@ -1,5 +1,5 @@
 {
-  "name": "@kami-ui/theme-defaults",
+  "name": "@kami-ui/theme-shop",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
