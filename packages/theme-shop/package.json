@@ -35,5 +35,8 @@
     "@kami-ui/react-theme": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=16"
   }
 }

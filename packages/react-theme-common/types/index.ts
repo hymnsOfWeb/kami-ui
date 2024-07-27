@@ -44,13 +44,14 @@ export interface ColorsObject {
   success?: ColorType;
   warning?: ColorType;
   info?: ColorType;
-  danger?: ColorType;
+  error?: ColorType;
 
   gray?: ColorType;
   white?: ColorType;
   black?: ColorType;
 
   text?: ColorType;
+  background?: ColorType;
 }
 
 export interface Breakpoint {
