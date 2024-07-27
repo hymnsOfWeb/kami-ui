@@ -18,32 +18,28 @@ export const defaultCommonColors: Omit<ColorsObject, "primary" | "secondary"> = 
 };
 
 export const defaultLightColors: ColorsObject = {
-  primary: [],
-  secondary: [],
-  accent: [],
-  text: [],
-  background: [],
-  // colord
-  analogous: [],
-  triadic: [],
-  tetradic: [],
-  complementary: [],
-  //
+  text: ["#d7d2f9", "#afa6f2", "#8779ec", "#5e4ce6", "#3620df", "#2b19b3", "#211386", "#160d59", "#0b062d"],
+  background: ["#d6d6f5", "#adadeb", "#8585e0", "#5c5cd6", "#3333cc", "#2929a3", "#1f1f7a", "#141452", "#0a0a29"],
+  primary: ["#d6d4f7", "#ada9ef", "#847ee7", "#5b54de", "#3129d6", "#2821ab", "#1e1881", "#141056", "#0a082b"],
+  secondary: ["#cfccff", "#9e99ff", "#6e66ff", "#3d33ff", "#0d00ff", "#0a00cc", "#080099", "#050066", "#030033"],
+  accent: ["#ceccff", "#9c99ff", "#6b66ff", "#3a33ff", "#0800ff", "#0700cc", "#050099", "#030066", "#020033"],
+  complementary: ["#f5f7d4", "#ebefa9", "#e2e77e", "#d7de54", "#cdd629", "#a4ab21", "#7c8118", "#535610", "#292b08"],
+  tetradic: ["#f7d4e4", "#efa9c8", "#e77ead", "#de5492", "#d62977", "#ab215f", "#811847", "#56102f", "#2b0818"],
+  triadic: ["#f7d6d4", "#efaca9", "#e7837e", "#de5b54", "#d63229", "#ab2821", "#811d18", "#561410", "#2b0a08"],
+  analogous: ["#d4e4f7", "#a9c8ef", "#7eade7", "#5492de", "#2977d6", "#215fab", "#184781", "#103056", "#08182b"],
   ...defaultCommonColors,
 };
 
 export const defaultDarkColors: ColorsObject = {
-  primary: [],
-  secondary: [],
-  accent: [],
-  text: [],
-  background: [],
-  // colord
-  analogous: [],
-  triadic: [],
-  tetradic: [],
-  complementary: [],
-  //
+  text: ["#0a062d", "#140c5a", "#1e1287", "#2818b4", "#321fe0", "#5b4be7", "#8478ed", "#ada5f3", "#d6d2f9"],
+  background: ["#0a0a29", "#141452", "#1f1f7a", "#2929a3", "#3333cc", "#5c5cd6", "#8585e0", "#adadeb", "#d6d6f5"],
+  primary: ["#0a082b", "#141056", "#1e1881", "#2821ab", "#3129d6", "#5b54de", "#847ee7", "#ada9ef", "#d6d4f7"],
+  secondary: ["#030033", "#050066", "#080099", "#0a00cc", "#0d00ff", "#3d33ff", "#6e66ff", "#9e99ff", "#cfccff"],
+  accent: ["#020033", "#030066", "#050099", "#0700cc", "#0800ff", "#3a33ff", "#6b66ff", "#9c99ff", "#ceccff"],
+  complementary: ["#292b08", "#535610", "#7c8118", "#a4ab21", "#cdd629", "#d7de54", "#e2e77e", "#ebefa9", "#f5f7d4"],
+  tetradic: ["#2b0818", "#56102f", "#811847", "#ab215f", "#d62977", "#de5492", "#e77ead", "#efa9c8", "#f7d4e4"],
+  triadic: ["#2b0a08", "#561410", "#811d18", "#ab2821", "#d63229", "#de5b54", "#e7837e", "#efaca9", "#f7d6d4"],
+  analogous: ["#08182b", "#103056", "#184781", "#215fab", "#2977d6", "#5492de", "#7eade7", "#a9c8ef", "#d4e4f7"],
   ...defaultCommonColors,
 };
 
