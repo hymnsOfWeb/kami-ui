@@ -1,4 +1,4 @@
-import { stringTrimmer } from "../helpers";
+import { stringTrimmer } from "../utils";
 import type { BorderRadiusArray, BreakpointSize, FontSizeArray, ThemeObject } from "../types";
 
 const colorBuilder = (colorsProp: ThemeObject["colors"]) => {

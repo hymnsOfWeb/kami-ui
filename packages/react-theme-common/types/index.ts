@@ -49,6 +49,8 @@ export interface ColorsObject {
   gray?: ColorType;
   white?: ColorType;
   black?: ColorType;
+
+  text?: ColorType;
 }
 
 export interface Breakpoint {
