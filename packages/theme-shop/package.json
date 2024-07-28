@@ -1,16 +1,37 @@
 {
   "name": "@kami-ui/theme-shop",
+  "version": "0.0.1",
   "description": "A theme shop exporting multiple themes.",
   "homepage": "https://github.com/hymnsOfWeb/kami-ui",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hymnsOfWeb/kami-ui"
+    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
   },
   "license": "ISC",
-  "version": "0.0.1-alpha.3",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "yarn lint:fix",
+    "build": "rollup -c rollup.config.mjs",
+    "dev": "yarn build && node ./scripts/watch.cjs",
+    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
+    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
+  },
+  "author": "Gobind Singh | Hymns Of Web",
+  "devDependencies": {
+    "@kami-ui/eslint-config": "*",
+    "@kami-ui/react-theme-common": "*",
+    "@kami-ui/rollup": "*",
+    "@kami-ui/tsconfigs": "*",
+    "eslint": "^8"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "kami-ui",
     "kui",
@@ -23,40 +44,8 @@
     "design language",
     "design system",
     "dls",
-    "design language system"
-  ],
-  "scripts": {
-    "prebuild": "yarn lint:fix",
-    "build": "rollup -c rollup.config.mjs",
-    "dev": "yarn build && node ./scripts/watch.cjs",
-    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
-    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
-  },
-  "author": "Gobind Singh | Hymns Of Web",
-  "devDependencies": {
-    "@kami-ui/next-theme": "*",
-    "@kami-ui/eslint-config": "*",
-    "@kami-ui/rollup": "*",
-    "@kami-ui/tsconfigs": "*",
-    "@kami-ui/react-theme-common": "*",
-    "eslint": "^8"
-  },
-  "peerDependencies": {
-    "@kami-ui/next-theme": "*",
-    "@kami-ui/react-theme": "*"
-  },
-  "peerDependenciesMeta": {
-    "@kami-ui/next-theme": {
-      "optional": true
-    },
-    "@kami-ui/react-theme": {
-      "optional": true
-    }
-  },
-  "engines": {
-    "node": ">=16"
-  },
-  "files": [
-    "dist"
+    "design language system",
+    "hymns of web",
+    "hymns"
   ]
 }
