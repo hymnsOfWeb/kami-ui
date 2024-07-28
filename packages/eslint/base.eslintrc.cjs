@@ -27,5 +27,12 @@ module.exports = {
     "no-plusplus": "off",
     "guard-for-in": "off",
     "no-continue": "off",
+    "node/no-unsupported-features/es-syntax": [
+      "error",
+      {
+        version: ">=13.0.0",
+        ignores: ["modules"],
+      },
+    ],
   },
 };

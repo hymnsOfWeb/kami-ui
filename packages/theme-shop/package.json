@@ -1,10 +1,30 @@
 {
   "name": "@kami-ui/theme-shop",
-  "version": "1.0.0",
-  "main": "dist/index.js",
+  "description": "A theme shop exporting multiple themes.",
+  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hymnsOfWeb/kami-ui"
+  },
+  "license": "ISC",
+  "version": "0.0.1-alpha.3",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "type": "module",
+  "keywords": [
+    "kami-ui",
+    "kui",
+    "material-ui",
+    "mui",
+    "kami",
+    "react",
+    "theme",
+    "shop",
+    "design language",
+    "design system",
+    "dls",
+    "design language system"
+  ],
   "scripts": {
     "prebuild": "yarn lint:fix",
     "build": "rollup -c rollup.config.mjs",
@@ -12,10 +32,7 @@
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Gobind Singh | Hymns Of Web",
   "devDependencies": {
     "@kami-ui/next-theme": "*",
     "@kami-ui/eslint-config": "*",
@@ -38,5 +55,8 @@
   },
   "engines": {
     "node": ">=16"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

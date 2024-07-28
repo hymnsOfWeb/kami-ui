@@ -71,7 +71,7 @@ export const commonConfig = ({ tsConfigOpts: { outDir, ...restTsOpts }, resolveN
       requireReturnsDefault: "auto",
     }),
     external(),
-    // terser(),
+    terser(),
   ];
   if (resolveNode) {
     plugins.unshift(
