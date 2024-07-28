@@ -1,6 +1,4 @@
 import { commonConfig, getDtsCommonPlugins, dtsDelete, externalPackages } from "@kami-ui/rollup";
-import { dirname, resolve } from "path";
-import { fileURLToPath } from "url";
 
 const outputFolder = "dist";
 const config = commonConfig({
