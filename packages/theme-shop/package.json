@@ -1,5 +1,6 @@
 {
   "name": "@kami-ui/theme-shop",
+  "author": "Gobind Singh | Hymns Of Web",
   "version": "0.0.1",
   "description": "A theme shop exporting multiple themes.",
   "homepage": "https://github.com/hymnsOfWeb/kami-ui",
@@ -12,13 +13,13 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
+    "prepublish": "yarn build",
     "prebuild": "yarn lint:fix",
     "build": "rollup -c rollup.config.mjs",
     "dev": "yarn build && node ./scripts/watch.cjs",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
-  "author": "Gobind Singh | Hymns Of Web",
   "devDependencies": {
     "@kami-ui/eslint-config": "*",
     "@kami-ui/react-theme-common": "*",
