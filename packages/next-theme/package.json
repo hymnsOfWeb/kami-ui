@@ -1,20 +1,25 @@
 {
   "name": "@kami-ui/next-theme",
-  "version": "0.0.1",
+  "author": "Gobind Singh | Hymns Of Web",
+  "version": "0.0.2",
+  "description": "",
+  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
+  },
+  "license": "ISC",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
+    "prepublish": "yarn build",
     "prebuild": "yarn lint:fix",
     "build": "rollup -c rollup.config.mjs",
     "dev": "rollup -c rollup.config.mjs && node ./scripts/watch.cjs",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@kami-ui/eslint-config": "*",
     "@kami-ui/rollup": "*",
@@ -41,5 +46,21 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "kami-ui",
+    "kui",
+    "material-ui",
+    "mui",
+    "kami",
+    "react",
+    "theme",
+    "shop",
+    "design language",
+    "design system",
+    "dls",
+    "design language system",
+    "hymns of web",
+    "hymns"
   ]
 }
