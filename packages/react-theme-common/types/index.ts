@@ -117,4 +117,5 @@ export type MultiThemeProviderProps = PropsWithChildren<{
   }[];
   injectInBody?: boolean;
   disableConsole?: boolean;
+  autoMaintainTheme?: boolean;
 }>;

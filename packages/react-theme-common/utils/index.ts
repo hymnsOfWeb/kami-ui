@@ -32,3 +32,33 @@ export const themeValidator = (themes: MultiThemeProviderProps["themes"]) => {
     }
   }
 };
+
+const themeModeLocalStorageKey = "preferred-color-scheme";
+
+export const saveColorScheme = (themeMode: string) => {
+  localStorage.setItem(themeModeLocalStorageKey, themeMode);
+};
+
+export const getSavedThemeScheme = () => localStorage.getItem(themeModeLocalStorageKey);
+
+export const detectColorScheme = (defaultScheme: "dark" | "light" = "light"): "dark" | "light" => {
+  try {
+    if (!window) return defaultScheme;
+    const savedScheme = getSavedThemeScheme();
+    if (savedScheme) {
+      return savedScheme as "dark" | "light";
+    }
+    if (!window.matchMedia) {
+      saveColorScheme(defaultScheme);
+      return defaultScheme;
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      saveColorScheme("dark");
+      return "dark";
+    }
+    saveColorScheme("light");
+    return "light";
+  } catch {
+    return defaultScheme;
+  }
+};

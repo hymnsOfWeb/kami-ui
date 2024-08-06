@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { type ColorsObject, stringTrimmer } from "@kami-ui/react-theme-common";
+import { type ColorsObject, saveColorScheme, stringTrimmer } from "@kami-ui/react-theme-common";
 import { ThemeContext } from "./multi-theme-provider";
 
 export const useTheme = () => {
@@ -22,6 +22,17 @@ export const useTheme = () => {
       }
     }
     document.body.classList.add(`kami-ui-${stringTrimmer(themeName)}`);
+    try {
+      if (themeName.includes("dark")) {
+        saveColorScheme("dark");
+      } else if (themeName.includes("light")) {
+        saveColorScheme("light");
+      } else {
+        // do nothing
+      }
+    } catch {
+      if (!disableConsole) warn(`Failed to update theme ${themeName} in local storage`);
+    }
   };
   const getTheme = (themeName: string | undefined) => themes.find(({ name }) => name === themeName);
   const getColor = (color: keyof ColorsObject, index: number) => {
@@ -44,5 +55,10 @@ export const useTheme = () => {
       return null;
     }
   };
-  return { updateTheme, getColor, getTheme };
+  const getCurrentTheme = (): string | null => {
+    const currentBodyClass =
+      Array.from(document.body.classList).find((bodyClass) => bodyClass.startsWith("kami-ui-")) ?? "";
+    return currentBodyClass.replace("kami-ui-", "") || null;
+  };
+  return { updateTheme, getColor, getTheme, getCurrentTheme };
 };

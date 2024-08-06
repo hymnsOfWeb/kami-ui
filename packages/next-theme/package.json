@@ -1,7 +1,7 @@
 {
   "name": "@kami-ui/next-theme",
   "author": "Gobind Singh | Hymns Of Web",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "",
   "homepage": "https://github.com/hymnsOfWeb/kami-ui",
   "repository": {
@@ -14,7 +14,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prepublish": "yarn build",
-    "prebuild": "yarn lint:fix",
+    "prebuild": "yarn lint:fix && rimraf dist/*",
     "build": "rollup -c rollup.config.mjs",
     "dev": "rollup -c rollup.config.mjs && node ./scripts/watch.cjs",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",

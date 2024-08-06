@@ -1,1 +1,2 @@
 - Discussion: Should we use isomorphic-dompurify to remove dangerouslySetInnerHTML?
+- dont forget to add in docs that there should be a classname in body to preselect the theme
