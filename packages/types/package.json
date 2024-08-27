@@ -31,7 +31,8 @@
     "react-dom": "^17 || ^18 || ^19"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "keywords": [
     "kami-ui",
