@@ -1,4 +1,4 @@
-import { MultiThemeProviderProps } from "../types";
+import { MultiThemeProviderProps } from "@kami-ui/types";
 
 export const stringTrimmer = (str: string) => str.trim().replace(/\s/gm, "-");
 

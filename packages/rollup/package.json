@@ -1,5 +1,6 @@
 {
   "name": "@kami-ui/rollup",
+  "types": "index.d.ts",
   "description": "",
   "private": true,
   "type": "module",

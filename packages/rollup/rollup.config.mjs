@@ -29,6 +29,7 @@ export const externalPackages = [
   "next",
   "react-helment",
   "next/head",
+  "@kami-ui/types",
 ];
 
 export const dtsDelete = (paths = []) =>

@@ -1,13 +1,14 @@
 import { createContext } from "react";
 import Head from "next/head";
+import { useAmp } from "next/amp";
 import {
   stringTrimmer,
   themeBuilder,
   themeValidator,
   useIsomorphicLayoutEffect,
-  type MultiThemeProviderProps,
   detectColorScheme,
 } from "@kami-ui/react-theme-common";
+import type { MultiThemeProviderProps } from "@kami-ui/types";
 
 export const ThemeContext = createContext<{
   themes: MultiThemeProviderProps["themes"];
@@ -43,9 +44,11 @@ const MultiThemeProvider = ({
   themes = [],
   injectInBody = false,
   disableConsole = false,
+  disableOnAmp = true,
   autoMaintainTheme = true,
   children,
 }: MultiThemeProviderProps) => {
+  const isAmp = useAmp();
   themeValidator(themes);
   const styles = themes.map(({ name, theme }) => themeBuilder(theme, name)).join("");
   const styleElem = <style id="kami-ui-styles" dangerouslySetInnerHTML={{ __html: styles }} />;
@@ -57,7 +60,7 @@ const MultiThemeProvider = ({
   return (
     <ThemeContext.Provider value={value}>
       {autoMaintainTheme && <PreChildren themes={themes} />}
-      {injectInBody ? styleElem : <Head>{styleElem}</Head>}
+      {disableOnAmp && !isAmp && (injectInBody ? styleElem : <Head>{styleElem}</Head>)}
       {children}
     </ThemeContext.Provider>
   );

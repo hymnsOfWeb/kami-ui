@@ -1,4 +1,4 @@
-import { ColorsObject, MultiThemeProviderProps, ThemeObject } from "@kami-ui/react-theme-common";
+import { ColorsObject, MultiThemeProviderProps, ThemeObject } from "@kami-ui/types";
 import {
   defaultSpacing as bayLeafCoeusCriusSpacing,
   defaultTypography as bayLeafCoeusCriusTypography,

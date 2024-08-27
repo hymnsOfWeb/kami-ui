@@ -1,10 +1,4 @@
-import {
-  ColorsObject,
-  SpacingObject,
-  ThemeObject,
-  TypographyObject,
-  MultiThemeProviderProps,
-} from "@kami-ui/react-theme-common";
+import { ColorsObject, SpacingObject, ThemeObject, TypographyObject, MultiThemeProviderProps } from "@kami-ui/types";
 
 export const defaultCommonColors: Omit<ColorsObject, "primary" | "secondary"> = {
   black: "#1A1A1A",

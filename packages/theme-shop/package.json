@@ -20,6 +20,9 @@
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
+  "dependencies": {
+    "@kami-ui/types": "*"
+  },
   "devDependencies": {
     "@kami-ui/eslint-config": "*",
     "@kami-ui/react-theme-common": "*",

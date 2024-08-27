@@ -108,6 +108,7 @@ export type ThemeProviderProps = PropsWithChildren<{
   injectInBody?: boolean;
   mode?: string;
   theme: ThemeObject;
+  disableOnAmp?: boolean;
 }>;
 
 export type MultiThemeProviderProps = PropsWithChildren<{
@@ -118,4 +119,5 @@ export type MultiThemeProviderProps = PropsWithChildren<{
   injectInBody?: boolean;
   disableConsole?: boolean;
   autoMaintainTheme?: boolean;
+  disableOnAmp?: boolean;
 }>;

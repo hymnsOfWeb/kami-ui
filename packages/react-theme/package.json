@@ -13,9 +13,12 @@
     "eslint": "^8"
   },
   "peerDependencies": {
-    "react": "^17 | ^18 | ^19",
-    "react-dom": "^17 | ^18 | ^19",
+    "react": "^17 || ^18 || ^19",
+    "react-dom": "^17 || ^18 || ^19",
     "next": ">=12",
     "react-helmet": "^6"
+  },
+  "dependencies": {
+    "@kami-ui/types": "*"
   }
 }

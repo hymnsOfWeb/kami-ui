@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { type ColorsObject, saveColorScheme, stringTrimmer } from "@kami-ui/react-theme-common";
+import { saveColorScheme, stringTrimmer } from "@kami-ui/react-theme-common";
+import { ColorsObject } from "@kami-ui/types";
 import { ThemeContext } from "./multi-theme-provider";
 
 export const useTheme = () => {

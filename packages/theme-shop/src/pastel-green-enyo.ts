@@ -1,4 +1,4 @@
-import { ColorsObject, MultiThemeProviderProps, ThemeObject } from "@kami-ui/react-theme-common";
+import { ColorsObject, MultiThemeProviderProps, ThemeObject } from "@kami-ui/types";
 import {
   defaultSpacing as pastelGreenEnyoSpacing,
   defaultTypography as pastelGreenEnyoTypography,
