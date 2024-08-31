@@ -1,11 +1,11 @@
 {
   "name": "@kami-ui/next-theme",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A versatile and customizable theme management library for Next.js (pages router)",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "author": "Gobind Singh | Hymns Of Web",
+  "author": "Hymns Of Web | Gobind Singh",
   "homepage": "https://github.com/hymnsOfWeb/kami-ui",
   "repository": {
     "type": "git",
@@ -22,19 +22,19 @@
   },
   "devDependencies": {
     "@kami-ui/eslint-config": "*",
+    "@kami-ui/react-theme-common": "*",
     "@kami-ui/rollup": "*",
     "@kami-ui/tsconfigs": "*",
-    "@kami-ui/react-theme-common": "*",
     "eslint": "^8",
     "next": "^14",
     "react": "^18",
     "react-dom": "^18"
   },
   "peerDependencies": {
+    "@kami-ui/theme-shop": "*",
     "next": ">=12",
     "react": "^17 || ^18 || ^19",
-    "react-dom": "^17 || ^18 || ^19",
-    "@kami-ui/theme-shop": "*"
+    "react-dom": "^17 || ^18 || ^19"
   },
   "dependencies": {
     "@kami-ui/types": "*"
