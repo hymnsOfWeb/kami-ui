@@ -1,6 +1,6 @@
 # @kami-ui/next-theme
 
-A versatile and customizable theme library for React that allows you to define and manage themes effortlessly. It provides utilities for handling colors, typography, spacing, and more, making it easier to maintain a consistent design across your application.
+A versatile and customizable theme library for Next.js (pages router) that allows you to define and manage themes effortlessly. 
 
 ---
 
@@ -108,6 +108,7 @@ export default App;
 - `theme` (`ThemeObject`): The theme configuration object.
 - `injectInBody` (`boolean`, optional): Whether to inject the theme styles into the body.
 - `mode` (`string`, optional): The mode for the theme (e.g., light or dark).
+- `disableOnAmp` (`boolean`, optional): Whether to disable the theme injection on AMP pages.
 
 ### `MultiThemeProvider`
 
@@ -116,6 +117,7 @@ export default App;
 - `themes` (`Array<{ name: string; theme: ThemeObject }>`): An array of theme objects with their names.
 - `injectInBody` (`boolean`, optional): Whether to inject the theme styles into the body.
 - `disableConsole` (`boolean`, optional): Whether to disable console warnings.
+- `disableOnAmp` (`boolean`, optional): Whether to disable the theme injection on AMP pages.
 
 ---
 
