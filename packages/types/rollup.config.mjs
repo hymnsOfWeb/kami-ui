@@ -15,7 +15,7 @@ const themeConfig = [
         interop: "auto",
       },
       {
-        file: `${outputFolder}/index.js`,
+        file: `${outputFolder}/index.cjs`,
         format: "cjs",
         interop: "auto",
       },
