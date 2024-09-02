@@ -9,7 +9,7 @@
   "scripts": {
     "prebuild": "yarn lint:fix",
     "build": "rollup -c rollup.config.mjs",
-    "dev": "rollup -c rollup.config.mjs && node ./scripts/watch.cjs",
+    "dev": "rollup -c rollup.config.mjs && node ./scripts/watcher.cjs",
     "lint": "prettier \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --write && eslint \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts",
     "lint:fix": "prettier \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --write && eslint \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --fix"
   },
