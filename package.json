@@ -4,12 +4,12 @@
   "description": "",
   "private": true,
   "type": "module",
-  "author": "Hymns Of Web",
-  "license": "MIT",
+  "author": "Gobind Singh | Hymns Of Web",
+  "license": "ISC",
   "workspaces": [
     "packages/*",
-    "app",
-    "storybook"
+    "storybook",
+    "react-components/*"
   ],
   "scripts": {
     "build": "turbo run build",

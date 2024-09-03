@@ -1,0 +1,46 @@
+{
+  "name": "@kami-ui/react-components",
+  "version": "0.0.1",
+  "description": "Kami-UI react components",
+  "main": "output/index.cjs",
+  "module": "output/index.mjs",
+  "types": "output/index.d.ts",
+  "author": "Gobind Singh | Hymns Of Web",
+  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@kami-ui/react-full-width-wrapper": "*"
+  },
+  "peerDependencies": {
+    "react": "^17 || ^18 || ^19",
+    "react-dom": "^17 || ^18 || ^19",
+    "@emotion/react": "^11"
+  },
+  "files": [
+    "output",
+    "README.md"
+  ],
+  "keywords": [
+    "kami-ui",
+    "kui",
+    "material-ui",
+    "mui",
+    "kami",
+    "react",
+    "theme",
+    "shop",
+    "design language",
+    "design system",
+    "dls",
+    "design language system",
+    "hymns of web",
+    "hymns"
+  ],
+  "engines": {
+    "node": ">=16"
+  }
+}

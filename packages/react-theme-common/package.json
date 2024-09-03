@@ -14,7 +14,7 @@
     "lint:fix": "prettier \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --write && eslint \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gobind Singh | Hymns Of Web",
   "license": "ISC",
   "description": "",
   "dependencies": {

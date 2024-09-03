@@ -5,7 +5,7 @@
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "author": "Hymns Of Web | Gobind Singh",
+  "author": "Gobind Singh | Hymns Of Web",
   "homepage": "https://github.com/hymnsOfWeb/kami-ui",
   "repository": {
     "type": "git",

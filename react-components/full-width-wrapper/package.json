@@ -1,7 +1,7 @@
 {
-  "name": "@kami-ui/types",
+  "name": "@kami-ui/react-full-width-wrapper",
   "version": "0.0.1",
-  "description": "Types for Kami UI",
+  "description": "Kami-UI full width wrapper component for react",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -13,28 +13,34 @@
   },
   "license": "ISC",
   "scripts": {
-    "prebuild": "yarn lint:fix",
+    "prepublish": "yarn build",
+    "prebuild": "yarn lint:fix && rimraf dist/*",
     "build": "rollup -c rollup.config.mjs",
-    "dev": "rollup -c rollup.config.mjs && node ./scripts/watcher.cjs",
+    "dev": "rollup -c rollup.config.mjs && node ./scripts/watch.cjs",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
   "devDependencies": {
     "@kami-ui/eslint-config": "*",
+    "@kami-ui/rollup": "*",
     "@kami-ui/tsconfigs": "*",
     "eslint": "^8",
+    "next": "^14",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "@emotion/react": "^11"
   },
   "peerDependencies": {
     "react": "^17 || ^18 || ^19",
-    "react-dom": "^17 || ^18 || ^19"
+    "react-dom": "^17 || ^18 || ^19",
+    "@emotion/react": "^11"
   },
   "files": [
     "dist",
     "README.md"
   ],
   "keywords": [
+    "full width wrapper",
     "kami-ui",
     "kui",
     "material-ui",

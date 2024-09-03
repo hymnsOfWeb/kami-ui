@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "main": "rollup.config.mjs",
   "keywords": [],
-  "author": "",
+  "author": "Gobind Singh | Hymns Of Web",
   "license": "ISC",
   "dependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
