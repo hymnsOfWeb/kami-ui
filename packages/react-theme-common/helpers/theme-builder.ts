@@ -60,7 +60,7 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
     case "object":
       try {
         for (const { breakpoint, size } of fontSizes as BreakpointSize<FontSizeArray>[]) {
-          vars += "@media only screen ";
+          vars += "@media ";
           if (breakpoint?.min) {
             vars += `and (min-width:${breakpoint.min}) `;
           }
@@ -123,7 +123,7 @@ const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
       case "object":
         try {
           for (const { breakpoint, size } of br as BreakpointSize<BorderRadiusArray>[]) {
-            vars += "@media only screen ";
+            vars += "@media ";
             if (breakpoint?.min) {
               vars += `and (min-width:${breakpoint.min}) `;
             }
@@ -188,7 +188,7 @@ const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
     case "object":
       try {
         for (const { breakpoint, size } of space as BreakpointSize<string[]>[]) {
-          vars += "@media only screen ";
+          vars += "@media ";
           if (breakpoint?.min) {
             vars += `and (min-width:${breakpoint.min}) `;
           }
