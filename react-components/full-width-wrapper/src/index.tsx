@@ -1,18 +1,22 @@
 import { jsx } from "@emotion/react";
+import { forwardRef, Ref } from "react";
 import { fullWidthContainerCss, fullWidthWrapperCss } from "./styles";
 import { FullWidthWrapperProps } from "./types";
 
-export function FullWidthWrapper({
-  containerSize = "90%",
-  maxContentWidth = "1800px",
-  className,
-  children,
-  element = "section",
-  secondContainer,
-  wrapperClassName,
-  wrapperCss,
-  isContainerCenter = true,
-}: FullWidthWrapperProps) {
+function FullWidthWrapperWithoutRef(
+  {
+    containerSize = "90%",
+    maxContentWidth = "1800px",
+    className,
+    children,
+    element = "section",
+    secondContainer,
+    wrapperClassName,
+    wrapperCss,
+    isContainerCenter = true,
+  }: FullWidthWrapperProps,
+  ref: Ref<HTMLElement>,
+) {
   const innerElement = jsx(
     "div",
     {
@@ -26,11 +30,14 @@ export function FullWidthWrapper({
     {
       className: wrapperClassName,
       css: [fullWidthWrapperCss(isContainerCenter), wrapperCss],
+      ref,
     },
     innerElement,
     secondContainer,
   );
   return outerElement as JSX.Element;
 }
+
+export const FullWidthWrapper = forwardRef(FullWidthWrapperWithoutRef);
 
 export type * from "./types";
