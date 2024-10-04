@@ -25,7 +25,8 @@ const colorBuilder = (colorsProp: ThemeObject["colors"]) => {
 
 const typographyBuilder = (typography: ThemeObject["typography"]) => {
   let vars = "";
-  if (!typography) return vars;
+  let outsideVars = "";
+  if (!typography) return { vars, outsideVars };
   const { fontSizes, fontFamilies } = typography;
   if (fontFamilies) {
     for (const fontFamily in fontFamilies) {
@@ -33,7 +34,7 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
     }
   }
   const len = fontSizes?.length;
-  if (!len && typeof fontSizes === "object") return vars;
+  if (!len && typeof fontSizes === "object") return { vars, outsideVars };
   const sizeArr = ["4xs", "3xs", "2xs", "1xs", "s", "m", "l", "1xl", "2xl", "3xl", "4xl"];
   const getSizeArStart = (fontSizeLength: number): number => {
     switch (fontSizeLength) {
@@ -60,7 +61,7 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
     case "object":
       try {
         for (const { breakpoint, size } of fontSizes as BreakpointSize<FontSizeArray>[]) {
-          vars += "@media ";
+          outsideVars += "@media ";
           const conditions = [];
           if (breakpoint?.min) {
             conditions.push(`(min-width:${breakpoint.min})`);
@@ -71,16 +72,16 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
           if (breakpoint?.orientation) {
             conditions.push(`(orientation:${breakpoint.orientation})`);
           }
-          vars += conditions.join(" and ");
-          vars += "{";
+          outsideVars += conditions.join(" and ");
+          outsideVars += "{ <START>";
           try {
             for (let i = 0; i < size.length; i++) {
-              vars += `--fs-${sizeArr[i + getSizeArStart(size.length)]}:${size[i]};`;
+              outsideVars += `--fs-${sizeArr[i + getSizeArStart(size.length)]}:${size[i]};`;
             }
           } catch {
             // todo
           }
-          vars += "}";
+          outsideVars += "}}";
         }
       } catch {
         // todo
@@ -90,12 +91,13 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
       // todo
       break;
   }
-  return vars;
+  return { vars, outsideVars };
 };
 
 const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
   let vars = "";
-  if (!spacing) return vars;
+  let outsideVars = "";
+  if (!spacing) return { vars, outsideVars };
   if (spacing?.borderRadius) {
     const sizeArr = ["2xs", "1xs", "s", "m", "l", "1xl", "2xl"];
     const br = spacing.borderRadius;
@@ -190,25 +192,25 @@ const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
     case "object":
       try {
         for (const { breakpoint, size } of space as BreakpointSize<string[]>[]) {
-          vars += "@media ";
+          outsideVars += "@media ";
           if (breakpoint?.min) {
-            vars += `and (min-width:${breakpoint.min}) `;
+            outsideVars += `and (min-width:${breakpoint.min}) `;
           }
           if (breakpoint?.max) {
-            vars += `and (max-width:${breakpoint.max}) `;
+            outsideVars += `and (max-width:${breakpoint.max}) `;
           }
           if (breakpoint?.orientation) {
-            vars += `and (orientation:${breakpoint.orientation}) `;
+            outsideVars += `and (orientation:${breakpoint.orientation}) `;
           }
-          vars += "{";
+          outsideVars += "{ <START>";
           try {
             for (let i = 0; i < size.length; i++) {
-              vars += `--space-${i}:${size[i]};`;
+              outsideVars += `--space-${i}:${size[i]};`;
             }
           } catch {
             // todo
           }
-          vars += "}";
+          outsideVars += "}}";
         }
       } catch {
         // todo
@@ -218,16 +220,19 @@ const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
       // todo
       break;
   }
-  return vars;
+  return { vars, outsideVars };
 };
 
 const themeBuilder = (theme: ThemeObject, mode?: string): string => {
   if (!theme) return "";
   const { colors: c, typography: t, spacing: s } = theme;
   const colors = colorBuilder(c);
-  const spacing = spacingBuilder(s);
-  const typography = typographyBuilder(t);
-  const formattedVars = `${mode ? `body.kami-ui-${stringTrimmer(mode)}` : `:root`}{${colors}${typography}${spacing}}`;
+  const { vars: spacingVars, outsideVars: spacingOutsideVars } = spacingBuilder(s);
+  const { vars: typographyVars, outsideVars: typographyOutsideVars } = typographyBuilder(t);
+  const start = mode ? `body.kami-ui-${stringTrimmer(mode)}` : `:root`;
+  let formattedVars = `${start}{${colors}${typographyVars}${spacingVars}}`;
+  formattedVars += typographyOutsideVars.replace("<START>", `${start}{`);
+  formattedVars += spacingOutsideVars.replace("<START>", `${start}{`);
   return formattedVars;
 };
 
