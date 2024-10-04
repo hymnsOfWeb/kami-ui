@@ -7,8 +7,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "prebuild": "yarn lint:fix",
-    "build": "rollup -c rollup.config.mjs && rimraf dist/*",
+    "prebuild": "yarn lint:fix && rimraf dist/*",
+    "build": "rollup -c rollup.config.mjs",
     "build:no-lint": "rollup -c rollup.config.mjs",
     "dev": "yarn build && node ./scripts/watcher.cjs",
     "lint": "prettier \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --write && eslint \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts",
