@@ -1,6 +1,6 @@
 {
   "name": "@kami-ui/next-theme",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A versatile and customizable theme management library for Next.js (pages router)",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -16,7 +16,8 @@
     "prepublish": "yarn build",
     "prebuild": "yarn lint:fix && rimraf dist/*",
     "build": "rollup -c rollup.config.mjs",
-    "dev": "rollup -c rollup.config.mjs && node ./scripts/watch.cjs",
+    "build:no-lint": "rollup -c rollup.config.mjs",
+    "dev": "yarn build && node ./scripts/watch.cjs",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },

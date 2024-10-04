@@ -61,15 +61,17 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
       try {
         for (const { breakpoint, size } of fontSizes as BreakpointSize<FontSizeArray>[]) {
           vars += "@media ";
+          const conditions = [];
           if (breakpoint?.min) {
-            vars += `and (min-width:${breakpoint.min}) `;
+            conditions.push(`(min-width:${breakpoint.min})`);
           }
           if (breakpoint?.max) {
-            vars += `and (max-width:${breakpoint.max}) `;
+            conditions.push(`(max-width:${breakpoint.max})`);
           }
           if (breakpoint?.orientation) {
-            vars += `and (orientation:${breakpoint.orientation}) `;
+            conditions.push(`(orientation:${breakpoint.orientation})`);
           }
+          vars += conditions.join(" and ");
           vars += "{";
           try {
             for (let i = 0; i < size.length; i++) {
