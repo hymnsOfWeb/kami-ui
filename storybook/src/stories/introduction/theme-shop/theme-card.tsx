@@ -40,6 +40,7 @@ const ThemeCard = ({
         toast.success("Successfully copied theme name");
       } catch (err) {
         toast.error("Copy failed");
+        // eslint-disable-next-line no-console -- We want to log the error for debugging purposes.
         console.error("Copy failed:", err);
       }
     };
