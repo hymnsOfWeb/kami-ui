@@ -1,7 +1,13 @@
 import { css } from "@emotion/react";
 
+export { default as styled } from "@emotion/styled";
+
 const globalStyles = css`
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
   body {
+    background-color: var(--color-background-100);
     color: var(--color-text-900);
     box-sizing: border-box;
 
@@ -15,7 +21,7 @@ const globalStyles = css`
   }
 
   .sbdocs-content {
-    * {
+    *:not([class*="kami"]) {
       color: var(--color-text-800) !important;
     }
     h1,
@@ -64,6 +70,65 @@ const globalStyles = css`
       background: transparent !important;
       * {
         color: var(--color-text-700) !important;
+      }
+    }
+  }
+
+  .docblock-argstable {
+    thead {
+      tr > * {
+        border-top: 1px solid var(--color-background-300) !important;
+        &:first-child {
+          border-left: 1px solid var(--color-background-300) !important;
+          border-top-left-radius: 5px;
+        }
+        &:last-child {
+          border-right: 1px solid var(--color-background-300) !important;
+          border-top-right-radius: 5px;
+        }
+      }
+    }
+    tbody > tr > * {
+      background: var(--color-background-200) !important;
+    }
+    tbody > tr:first-of-type > td:first-of-type {
+      border-inline-start: 0px solid transparent !important;
+      border-block-start: 0px solid transparent !important;
+      border-top-left-radius: 0px !important;
+    }
+    tbody > tr:first-of-type > td:last-child {
+      border-inline-end: 0px solid transparent !important;
+      border-block-start: 0px solid transparent !important;
+      border-top-right-radius: 0px !important;
+    }
+    td select {
+      background: var(--color-background-300) !important;
+      cursor: pointer;
+    }
+    span:has(select) > svg {
+      fill: currentColor !important;
+      path {
+        fill: currentColor !important;
+      }
+    }
+    textarea {
+      background: var(--color-background-300) !important;
+      color: var(--color-text-900) !important;
+      &:focus {
+        box-shadow: var(--color-complementary-500) 0px 0px 0px 1px inset !important;
+      }
+    }
+    label:has(input[role="switch"]) {
+      background: var(--color-background-400) !important;
+    }
+    input[role="switch"] {
+      /* background: var(--color-background-400) !important; */
+      &:checked ~ span:last-of-type,
+      &:not(:checked) ~ span:first-of-type {
+        background: var(--color-background-300) !important;
+      }
+      &:focus {
+        box-shadow: var(--color-complementary-500) 0px 0px 0px 1px inset !important;
       }
     }
   }

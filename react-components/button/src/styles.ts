@@ -33,7 +33,13 @@ const outlinedStyles = ({
 };
 
 const textStyles = (_: VariantFnProps) => {
-  return css``;
+  return css`
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: inline;
+    color: var(--color-text-900, inherit);
+  `;
 };
 
 const sizeStyles = ({ $size = "md" }: ButtonProps) => {
@@ -73,7 +79,7 @@ const borderRadiusStyles = ({ $borderRadius = "md" }: ButtonProps) => {
       return css`
         border-radius: var(--br-full, 999vw);
       `;
-    case "lg":
+    case "sm":
       return css`
         border-radius: var(--space-3, 8px);
       `;
@@ -81,7 +87,7 @@ const borderRadiusStyles = ({ $borderRadius = "md" }: ButtonProps) => {
       return css`
         border-radius: var(--space-4, 12px);
       `;
-    case "sm":
+    case "lg":
       return css`
         border-radius: var(--space-5, 16px);
       `;
@@ -120,5 +126,10 @@ export const ButtonWrapper = styled.button<ButtonProps>`
 
   &:hover {
     opacity: 0.9;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
   }
 `;

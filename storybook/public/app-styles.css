@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 body {
   --border-color: var(--color-background-300, rgba(38, 85, 115, 0.15));
 }
@@ -79,4 +82,14 @@ body {
 
 #sidebar-bottom-wrapper {
   display: none;
+}
+
+.sb-bar {
+  background: var(--color-background-100, black) !important;
+}
+.sb-bar button {
+  color: var(--color-text-800, rgb(201, 205, 207)) !important;
+}
+.sb-bar button svg {
+  color: inherit !important;
 }

@@ -1,6 +1,5 @@
-import { styled } from "@common";
 import { css } from "@emotion/react";
-import { breakpoints } from "@styles/global";
+import { breakpoints, styled } from "@styles/global";
 
 export const loaderCss = css`
   @keyframes rotation {
