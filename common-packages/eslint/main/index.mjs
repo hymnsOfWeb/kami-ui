@@ -20,15 +20,14 @@ const config = [
     ignores: [
       "**/__tests__/**/**/*",
       "**/__mocks__/**/**/*",
-      "rollup.config.*",
+      "dist",
+      "*.config.*",
       "node_modules/**/*.*",
       "dist/**/*.*",
-      "eslint.config.*",
       "!.storybook",
       "!**/.storybook/**",
     ],
   },
-  pluginJs.configs.recommended,
   ...tsEslintConfig,
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
@@ -42,7 +41,6 @@ const config = [
         tsconfigRootDir: process.cwd(),
       },
     },
-
     plugins: {
       prettier,
       "prefer-arrow-functions": preferArrowFunctions,

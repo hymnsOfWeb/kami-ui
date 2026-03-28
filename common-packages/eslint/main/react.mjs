@@ -9,16 +9,16 @@ import baseConfig from "./index.mjs";
 const config = [
   ...baseConfig,
   pluginReact.configs.flat.recommended,
-  pluginReactHooks.configs["recommended-latest"],
+  pluginReactHooks.configs.flat["recommended-latest"],
   pluginReactRefresh.configs.recommended,
   preferFunctionComponentConfig.configs.recommended,
   {
-    plugins: {
-      react: pluginReact,
-    },
     rules: {
       ...pluginReact.configs.flat?.recommended?.rules,
-      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
       "react/jsx-indent-props": ["warn", 2],
       "react/react-in-jsx-scope": "off",
       "react/jsx-props-no-spreading": "off",
@@ -26,6 +26,7 @@ const config = [
       "react/require-default-props": "off",
       "react-hooks/exhaustive-deps": "warn",
       "react-hooks/rules-of-hooks": "error",
+      "react-hooks/set-state-in-effect": "off",
       "react/no-unknown-property": ["error", { ignore: ["css"] }],
       "react/function-component-definition": [
         "warn",
@@ -36,11 +37,11 @@ const config = [
       ],
       "react-prefer-function-component/react-prefer-function-component": [
         "error",
-        { allowComponentDidCatch: false, allowJsxUtilityClass: false },
+        {
+          allowErrorBoundary: true,
+          allowJsxUtilityClass: false,
+        },
       ],
-    },
-    settings: {
-      react: { version: "detect" },
     },
   },
 ];

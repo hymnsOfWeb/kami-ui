@@ -2,7 +2,6 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": ["@kami-ui/tsconfigs/storybook.tsconfig.json"],
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@public/*": ["./public/*"],
       "@publicAssets/*": ["./public/assets/*"],

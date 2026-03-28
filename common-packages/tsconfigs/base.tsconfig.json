@@ -22,7 +22,6 @@
     "noFallthroughCasesInSwitch": true,
 
     "moduleResolution": "node",
-    "baseUrl": ".",
     "esModuleInterop": true,
     "inlineSourceMap": true,
     "inlineSources": true,

@@ -199,6 +199,7 @@ export const createLibraryBuildConfig = ({
     tsConfigOpts: {
       outDir: outputFolder,
       declaration: true, // Generate .d.ts files
+      rootDir: "src", // Required by TypeScript 6.0 for declaration output
       ...tsConfigOpts,
     },
     resolveNode,

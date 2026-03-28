@@ -1,0 +1,8 @@
+{
+  "extends": ["@kami-ui/tsconfigs/base.tsconfig.json"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["node"]
+  },
+  "include": ["main"]
+}

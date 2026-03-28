@@ -15,8 +15,10 @@ export type TextColors = keyof Omit<
 
 type Weight = `${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9}00`;
 
-export interface ButtonProps<ColorWeight = Weight, FontWeight = Weight>
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps<
+  ColorWeight = Weight,
+  FontWeight = Weight,
+> extends ButtonHTMLAttributes<HTMLButtonElement> {
   $variant?: ButtonVariant;
   $color?: ButtonColors;
   $size?: "sm" | "md" | "lg";

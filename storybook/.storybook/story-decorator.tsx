@@ -1,5 +1,5 @@
-import CommonDecorator from ".storybook/common-decorator";
 import type { Preview } from "@storybook/react-vite";
+import CommonDecorator from "./common-decorator";
 
 const StoryDecorator: Preview["decorators"] = (Story) => {
   return (

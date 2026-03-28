@@ -1,5 +1,5 @@
-import CommonDecorator from ".storybook/common-decorator";
 import { DocsContainer } from "@storybook/addon-docs/blocks";
+import CommonDecorator from "./common-decorator";
 
 const DocDecorator: typeof DocsContainer = ({ children, context }) => {
   return (

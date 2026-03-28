@@ -10,9 +10,9 @@ const config = [
       "node/no-unsupported-features/es-syntax": "off",
       "node/no-missing-import": "off",
       "react/jsx-props-no-spreading": "off",
-      "react/react-in-jsx-scope": "off"
-    }
-  }
+      "react/react-in-jsx-scope": "off",
+    },
+  },
 ];
 
 export default config;
