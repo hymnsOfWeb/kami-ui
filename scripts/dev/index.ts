@@ -14,8 +14,19 @@ const allPackages: Pkg[] = JSON.parse(
   execSync("pnpm m ls -r --json", { encoding: "utf8" }),
 );
 
+const excludedPackages = [
+  "@kami-ui/root",
+  "@kami-ui/rollup",
+  "@kami-ui/eslint-config",
+  "@kami-ui/tsconfigs",
+  "@kami-ui/types",
+];
+
 const filteredPackages = allPackages
-  .filter((pkg) => pkg.name?.startsWith("@kami-ui/"))
+  .filter(
+    (pkg) =>
+      pkg.name?.startsWith("@kami-ui/") && !excludedPackages.includes(pkg.name),
+  )
   .map((pkg) => pkg.name)
   .sort();
 
