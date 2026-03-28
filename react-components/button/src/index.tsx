@@ -1,4 +1,10 @@
-import { forwardRef, MouseEventHandler, Ref, TouchEventHandler } from "react";
+import {
+  ButtonHTMLAttributes,
+  forwardRef,
+  MouseEventHandler,
+  Ref,
+  TouchEventHandler,
+} from "react";
 import { ButtonWrapper } from "./styles";
 import { ButtonProps } from "./types";
 
@@ -12,7 +18,7 @@ const ButtonWithoutRef = (
     onMouseUp: onMouseUpProp,
     onTouchEnd: onTouchEndProp,
     ...props
-  }: ButtonProps,
+  }: ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>,
   ref: Ref<HTMLButtonElement>,
 ) => {
   const onMouseDown: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -48,6 +54,7 @@ const ButtonWithoutRef = (
 };
 
 const Button = forwardRef(ButtonWithoutRef);
+Button.displayName = "Button";
 export default Button;
 
 export type * from "./types";

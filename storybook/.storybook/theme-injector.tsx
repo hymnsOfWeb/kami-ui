@@ -2,29 +2,55 @@ import { useEffect, type PropsWithChildren } from "react";
 
 const SbThemeInjector = ({ children }: PropsWithChildren<unknown>) => {
   useEffect(() => {
-    let styleElem = parent.document.querySelector(
-      "head > #custom-app-style-link",
-    );
-    if (styleElem) return;
-    styleElem = parent.document.createElement("link");
-    styleElem.setAttribute("id", "custom-app-style-link");
-    styleElem.setAttribute("rel", "preload stylesheet");
-    styleElem.setAttribute("href", "/app-styles.css");
-    parent.document.head.appendChild(styleElem);
+    // If in iframe, inject into parent. If standalone, inject into self.
+    const isIframe = window.parent !== window;
+    let styleElem;
+    if (isIframe) {
+      styleElem = parent.document.querySelector(
+        "head > #custom-app-style-link",
+      );
+      if (styleElem) return;
+      styleElem = parent.document.createElement("link");
+      styleElem.setAttribute("id", "custom-app-style-link");
+      styleElem.setAttribute("rel", "preload stylesheet");
+      styleElem.setAttribute("href", "/app-styles.css");
+      parent.document.head.appendChild(styleElem);
+    } else {
+      styleElem = document.head.querySelector("#custom-app-style-link");
+      if (styleElem) return;
+      styleElem = document.createElement("link");
+      styleElem.setAttribute("id", "custom-app-style-link");
+      styleElem.setAttribute("rel", "preload stylesheet");
+      styleElem.setAttribute("href", "/app-styles.css");
+      document.head.appendChild(styleElem);
+    }
   }, []);
 
   useEffect(() => {
+    const isIframe = window.parent !== window;
     const callback: MutationCallback = () => {
       const styles = document.querySelector("#kami-ui-styles")?.innerHTML;
       if (!styles) return;
-      let newStyleElem = parent.document.head.querySelector("#kami-ui-styles");
-      if (!newStyleElem) {
-        const tempElem = parent.document.createElement("style");
-        tempElem.id = "kami-ui-styles";
-        parent.document.head.appendChild(tempElem);
-        newStyleElem = tempElem;
+      if (isIframe) {
+        let newStyleElem =
+          parent.document.head.querySelector("#kami-ui-styles");
+        if (!newStyleElem) {
+          const tempElem = parent.document.createElement("style");
+          tempElem.id = "kami-ui-styles";
+          parent.document.head.appendChild(tempElem);
+          newStyleElem = tempElem;
+        }
+        newStyleElem.innerHTML = styles;
+      } else {
+        let newStyleElem = document.head.querySelector("#kami-ui-styles");
+        if (!newStyleElem) {
+          const tempElem = document.createElement("style");
+          tempElem.id = "kami-ui-styles";
+          document.head.appendChild(tempElem);
+          newStyleElem = tempElem;
+        }
+        newStyleElem.innerHTML = styles;
       }
-      newStyleElem.innerHTML = styles;
     };
     const observer = new MutationObserver(callback);
     callback([], observer);
@@ -37,8 +63,14 @@ const SbThemeInjector = ({ children }: PropsWithChildren<unknown>) => {
   }, []);
 
   useEffect(() => {
+    const isIframe = window.parent !== window;
     const callback: MutationCallback = () => {
-      if (!document.body.getAttribute("class")?.includes("kami-ui")) return;
+      if (
+        !document.body.getAttribute("class")?.includes("kami-ui") ||
+        !isIframe
+      ) {
+        return;
+      }
       for (const parentBodyClass of parent.document.body.classList) {
         if (parentBodyClass.includes("kami-ui")) {
           parent.document.body.classList.remove(parentBodyClass);

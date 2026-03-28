@@ -4,7 +4,13 @@ import StoryDecorator from "./story-decorator";
 
 import "react-toastify/dist/ReactToastify.css";
 
-export const decorators: Preview["decorators"][] = [StoryDecorator];
+export const parameters = {
+  docs: {
+    story: {
+      inline: true,
+    },
+  },
+};
 
 const preview: Preview = {
   parameters: {
@@ -23,6 +29,7 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [StoryDecorator],
 };
 
 export default preview;

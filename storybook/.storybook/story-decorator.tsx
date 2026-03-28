@@ -1,7 +1,7 @@
-import type { Preview } from "@storybook/react-vite";
+import type { DecoratorFunction } from "storybook/internal/csf";
 import CommonDecorator from "./common-decorator";
 
-const StoryDecorator: Preview["decorators"] = (Story) => {
+const StoryDecorator: DecoratorFunction = (Story) => {
   return (
     <CommonDecorator>
       <Story />

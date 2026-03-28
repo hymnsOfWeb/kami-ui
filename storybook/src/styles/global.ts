@@ -6,17 +6,17 @@ const globalStyles = css`
     box-sizing: border-box;
 
     --border-color: var(--color-background-600);
+    font-family: var(--font-sans) !important;
   }
+
   .sbdocs-wrapper,
   .sbdocs-preview {
     background-color: var(--color-background-100) !important;
   }
-  .sbdocs-preview {
-    border: 1px solid var(--border-color) !important;
-  }
+
   .sbdocs-content {
     * {
-      color: var(--color-text-900) !important;
+      color: var(--color-text-800) !important;
     }
     h1,
     h2,
@@ -36,23 +36,34 @@ const globalStyles = css`
       border: 1px solid var(--color-background-700) !important;
       font-family: var(--font-mono) !important;
     }
+    div[focusable="true"] {
+      &:focus {
+        outline: var(--color-complementary-800) solid 2px;
+      }
+    }
     pre {
+      background-color: var(--color-background-200) !important;
       & > * {
-        background-color: var(--color-background-200) !important;
+        background-color: transparent !important;
       }
       div:has(> button) {
         background-color: transparent !important;
-      }
-      div[focusable="true"] {
-        &:focus {
-          outline: var(--color-complementary-800) solid 2px;
-        }
       }
       button {
         background-color: var(--color-background-300) !important;
         &:focus {
           box-shadow: var(--color-complementary-800) 0px -3px 0px 0px inset !important;
         }
+      }
+    }
+  }
+
+  .sbdocs-preview {
+    border: 1px solid var(--border-color) !important;
+    div[role="toolbar"] {
+      background: transparent !important;
+      * {
+        color: var(--color-text-700) !important;
       }
     }
   }
