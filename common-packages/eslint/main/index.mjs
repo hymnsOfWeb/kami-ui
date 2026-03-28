@@ -37,7 +37,8 @@ const config = [
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: "module",
-        project: true,
+        projectService: true,
+        tsconfigRootDir: process.cwd(),
       },
     },
     plugins: {
@@ -72,6 +73,7 @@ const config = [
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/prefer-for-of": "off",
 
       "@typescript-eslint/no-unsafe-argument": "warn",
       "@typescript-eslint/no-unsafe-call": "warn",

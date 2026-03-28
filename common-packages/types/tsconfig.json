@@ -2,6 +2,7 @@
   "extends": "@kami-ui/tsconfigs/base.tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
-    "lib": ["dom"]
+    "lib": ["dom"],
+    "sourceMap": true
   }
 }

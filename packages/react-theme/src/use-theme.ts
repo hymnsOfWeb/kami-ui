@@ -57,15 +57,41 @@ export const useTheme = () => {
         if (!disableConsole) warn(`Current theme not found`);
         return null;
       }
-      const fetchedColor = currentTheme?.theme?.colors?.[color]?.[index];
-      if (!color) {
+      const colorValue = currentTheme?.theme?.colors?.[color];
+      if (colorValue == null) {
         if (!disableConsole)
           warn(
-            `--color-${fetchedColor}-${index + 1}00 in theme ${currentTheme?.name} not found`,
+            `--color-${String(color)} in theme ${currentTheme?.name} not found`,
           );
         return null;
       }
-      return fetchedColor ?? null;
+      // If array of SingleColorType
+      if (Array.isArray(colorValue)) {
+        // If it's a number array (hsl/hsla), treat as single color
+        if (
+          (colorValue.length === 3 || colorValue.length === 4) &&
+          colorValue.every((n) => {
+            return typeof n === "number";
+          })
+        ) {
+          // Not a palette, just a single color
+          if (index === 0) return colorValue;
+          if (!disableConsole)
+            warn(
+              `--color-${String(color)} is a single color array, index ${index} out of bounds in theme ${currentTheme?.name}`,
+            );
+          return null;
+        }
+        // Otherwise, treat as palette
+        return colorValue[index] ?? null;
+      }
+      // If not array, it's a SingleColorType
+      if (index === 0) return colorValue;
+      if (!disableConsole)
+        warn(
+          `--color-${String(color)} is a single color, index ${index} out of bounds in theme ${currentTheme?.name}`,
+        );
+      return null;
     } catch {
       return null;
     }

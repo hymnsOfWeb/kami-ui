@@ -4,7 +4,7 @@ import type {
   FontSizeArray,
   ThemeObject,
 } from "@kami-ui/types";
-import { stringTrimmer } from "../utils";
+import { stringTrimmer, toHslString } from "../utils";
 
 const colorBuilder = (colorsProp: ThemeObject["colors"]) => {
   let vars = "";
@@ -14,15 +14,43 @@ const colorBuilder = (colorsProp: ThemeObject["colors"]) => {
     black: "#000",
     ...colorsProp,
   };
+
   for (const colorKey in colors) {
     const colorArr = colors[colorKey as keyof ThemeObject["colors"]];
     if (!colorArr) continue;
     if (typeof colorArr === "string") {
-      vars += `--color-${colorKey}:${colorArr};`;
+      const { hsl, alpha } = toHslString(colorArr);
+      vars += `--color-${colorKey}-base:${hsl};`;
+      vars += `--color-${colorKey}:hsl(var(--color-${colorKey}-base) / ${alpha});`;
       continue;
-    }
-    for (let i = 0; i < (colorArr?.length ?? 0); i++) {
-      vars += `--color-${colorKey}-${(i + 1) * 100}:${colorArr[i]};`;
+    } else if (Array.isArray(colorArr)) {
+      const firstItem = colorArr[0];
+      if (typeof firstItem === "number") {
+        const { hsl, alpha } = toHslString(colorArr);
+        vars += `--color-${colorKey}-base:${hsl};`;
+        vars += `--color-${colorKey}:hsl(var(--color-${colorKey}-base) / ${alpha});`;
+        continue;
+      } else {
+        for (let i = 0; i < colorArr.length; i++) {
+          const { hsl, alpha } = toHslString(colorArr[i]);
+          vars += `--color-${colorKey}-${(i + 1) * 100}-base:${hsl};`;
+          vars += `--color-${colorKey}-${(i + 1) * 100}:hsl(var(--color-${colorKey}-${
+            (i + 1) * 100
+          }-base) / ${alpha});`;
+        }
+      }
+    } else {
+      if ("h" in colorArr && "s" in colorArr && "l" in colorArr) {
+        vars += `--color-${colorKey}-base:${colorArr?.h} ${colorArr?.s}% ${colorArr?.l}%;`;
+        vars += `--color-${colorKey}:hsl(var(--color-${colorKey}-base) / ${
+          "a" in colorArr ? String(colorArr.a) : "1"
+        });`;
+      } else {
+        vars += `--color-${colorKey}-base:${colorArr?.hue} ${colorArr?.saturation}% ${colorArr?.lightness}%;`;
+        vars += `--color-${colorKey}:hsl(var(--color-${colorKey}-base) / ${
+          "alpha" in colorArr ? String(colorArr.alpha) : "1"
+        });`;
+      }
     }
   }
   return vars;

@@ -1,6 +1,22 @@
 import { PropsWithChildren } from "react";
 
-export type ColorType = string | string[];
+export type SingleColorType =
+  | string
+  | [number, number, number]
+  | [number, number, number, number]
+  | {
+      h: number;
+      s: number;
+      l: number;
+      a?: number;
+    }
+  | {
+      hue: number;
+      saturation: number;
+      lightness: number;
+      alpha?: number;
+    };
+export type ColorType = SingleColorType | SingleColorType[];
 type String3Array = [string, string, string];
 type String5Array = [string, string, string, string, string];
 type String7Array = [string, string, string, string, string, string, string];

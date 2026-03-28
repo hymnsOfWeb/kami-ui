@@ -1,7 +1,43 @@
 import { MultiThemeProviderProps } from "@kami-ui/types";
+import { isHexColor, toHslString } from "./colors";
 
 export const stringTrimmer = (str: string) => {
   return str.trim().replace(/\s/gm, "-");
+};
+
+const validateSingleColor = (val: any, color: string, themeName: string) => {
+  if (typeof val === "string") {
+    if (!isHexColor(val)) {
+      throw new Error(
+        `Color '${color}' in theme '${themeName}' must be a valid hex string.`,
+      );
+    }
+    return;
+  }
+  if (Array.isArray(val)) {
+    if (
+      (val.length === 3 || val.length === 4) &&
+      val.every((n) => {
+        return typeof n === "number";
+      })
+    ) {
+      return;
+    }
+    throw new Error(
+      `Color '${color}' in theme '${themeName}' must be an array of 3 or 4 numbers.`,
+    );
+  }
+  if (typeof val === "object" && val !== null) {
+    if (!toHslString(val)) {
+      throw new Error(
+        `Color '${color}' in theme '${themeName}' must be a valid hsl(a) or hue/saturation/lightness/alpha object.`,
+      );
+    }
+    return;
+  }
+  throw new Error(
+    `Color '${color}' in theme '${themeName}' is not a valid color value.`,
+  );
 };
 
 export const themeValidator = (themes: MultiThemeProviderProps["themes"]) => {
@@ -27,16 +63,42 @@ export const themeValidator = (themes: MultiThemeProviderProps["themes"]) => {
     }
     checkedNames.push(name);
     for (const color in colors) {
-      const length = colors[color as ColorKey]?.length;
-      for (const checked of checkedNames) {
-        const checkedLen = themes.find(({ name: checkedName }) => {
-          return checkedName === checked;
-        })?.theme?.colors[color as ColorKey]?.length;
-        if (checkedLen !== length) {
+      const value = colors[color as ColorKey];
+      // Accept string, hsl(a) array, hsl(a) object, or array of any of these (including array of hex strings)
+      if (Array.isArray(value)) {
+        if (value.length === 0) {
           throw new Error(
-            `Invalid theme config: Themes have different lengths of color ${color};`,
+            `Color '${color}' in theme '${name}' must not be an empty array.`,
           );
         }
+        // Accept [number,number,number] or [number,number,number,number] as a single color
+        if (
+          (value.length === 3 || value.length === 4) &&
+          value.every((n) => {
+            return typeof n === "number";
+          })
+        ) {
+          validateSingleColor(value, color, name);
+          continue;
+        }
+        // Otherwise, treat as array of SingleColorType
+        value.forEach((v) => {
+          return validateSingleColor(v, color, name);
+        });
+        // Check length consistency across themes
+        const arrLen = value.length;
+        for (const checked of checkedNames) {
+          const checkedArr = themes.find(({ name: checkedName }) => {
+            return checkedName === checked;
+          })?.theme?.colors[color as ColorKey];
+          if (!Array.isArray(checkedArr) || checkedArr.length !== arrLen) {
+            throw new Error(
+              `Invalid theme config: Themes have different lengths of color array '${color}';`,
+            );
+          }
+        }
+      } else {
+        validateSingleColor(value, color, name);
       }
     }
   }
@@ -75,3 +137,5 @@ export const detectColorScheme = (
     return defaultScheme;
   }
 };
+
+export * from "./colors";

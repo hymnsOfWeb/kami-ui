@@ -23,8 +23,6 @@
 
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "inlineSourceMap": true,
-    "inlineSources": true,
 
     "declaration": true
   },
