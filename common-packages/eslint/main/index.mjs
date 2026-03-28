@@ -37,8 +37,7 @@ const config = [
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: "module",
-        project: ["./tsconfig.json"],
-        tsconfigRootDir: process.cwd(),
+        project: true,
       },
     },
     plugins: {

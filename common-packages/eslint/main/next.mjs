@@ -1,7 +1,7 @@
 import nextPlugin from "@next/eslint-plugin-next";
 import reactConfig from "./react.mjs";
 
-/** @type {Linter.Config[]} */
+/** @type {import("eslint").Linter.Config[]} */
 const config = [
   ...reactConfig,
   {

@@ -2,8 +2,8 @@ import { Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
 
 # Theme Provider
 
-A versatile and customizable theme library that allows you to define and manage themes effortlessly.   
-***This doc is meant for Next.js users; Please change the commands accordingly if you are using react.***
+A versatile and customizable theme library that allows you to define and manage themes effortlessly.  
+**_This doc is meant for Next.js users; Please change the commands accordingly if you are using react._**
 
 ---
 
@@ -36,8 +36,8 @@ npm install @kami-ui/theme-shop
 Wrap your `_app.tsx` file with `ThemeProvider` to provide a single theme:
 
 ```tsx
-import React from 'react';
-import { ThemeProvider, ThemeObject } from '@kami-ui/next-theme';
+import React from "react";
+import { ThemeProvider, ThemeObject } from "@kami-ui/next-theme";
 
 const theme: ThemeObject = {
   // ... custom theme properties
@@ -58,20 +58,20 @@ export default App;
 If you need to support multiple themes, use `MultiThemeProvider`:
 
 ```tsx
-import React from 'react';
-import { MultiThemeProvider, ThemeObject } from '@kami-ui/next-theme';
+import React from "react";
+import { MultiThemeProvider, ThemeObject } from "@kami-ui/next-theme";
 
 // Note: Having themes name "light" and "dark" is recommended for better compatibility out-of-the-box.
 
 const themes: ThemeObject = [
   {
-    name: 'light',
+    name: "light",
     theme: {
       // ... custom light theme properties
     },
   },
   {
-    name: 'dark',
+    name: "dark",
     theme: {
       // ... custom dark theme properties
     },

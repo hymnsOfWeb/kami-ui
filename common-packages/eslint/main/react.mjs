@@ -5,7 +5,7 @@ import pluginReactRefresh from "eslint-plugin-react-refresh";
 import baseConfig from "./index.mjs";
 // import preferFunctionComponentPlugin from "eslint-plugin-react-prefer-function-component";
 
-/** @type {Linter.Config[]} */
+/** @type {import("eslint").Linter.Config[]} */
 const config = [
   ...baseConfig,
   pluginReact.configs.flat.recommended,

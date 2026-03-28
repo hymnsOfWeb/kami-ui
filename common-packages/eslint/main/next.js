@@ -1,7 +1,7 @@
 const reactConfig = require("./react.js");
 const nextPlugin = require("@next/eslint-plugin-next");
 
-/** @type {Linter.Config[]} */
+/** @type {import("eslint").Linter.Config[]} */
 const config = [
   ...reactConfig,
   {

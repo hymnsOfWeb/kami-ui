@@ -4,7 +4,7 @@ const pluginReactRefresh = require("eslint-plugin-react-refresh");
 const baseConfig = require("./index.js");
 const preferFunctionComponentConfig = require("eslint-plugin-react-prefer-function-component/config");
 
-/** @type {Linter.Config[]} */
+/** @type {import("eslint").Linter.Config[]} */
 const config = [
   ...baseConfig,
   pluginReact.configs.flat.recommended,
