@@ -8,7 +8,14 @@ body {
 
 .sidebar-item {
   --tree-node-background-hover: var(--color-background-200, #012f4c);
-  color: var(--color-text-800);
+  color: var(--color-text-800) !important;
+}
+
+.sidebar-item[data-selected="true"] {
+  color: var(--color-text-100) !important;
+}
+.sidebar-item[data-selected="true"] svg {
+  color: currentColor !important;
 }
 
 [data-ref-id="storybook_internal"][data-item-id]:not(

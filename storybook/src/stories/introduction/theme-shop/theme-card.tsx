@@ -1,6 +1,11 @@
 import { Button } from "@kami-ui/react-components";
 import { useTheme } from "@kami-ui/react-theme";
 import { ContentCopyRounded } from "@mui/icons-material";
+import {
+  ThemeCardBody,
+  ThemeCardHeader,
+  ThemeCardWrapper,
+} from "@stories/introduction/theme-shop/styles";
 import { copyToClipboard } from "@stories/introduction/theme-shop/utils";
 import { type MouseEventHandler, type ReactNode } from "react";
 import { toast } from "react-toastify";
@@ -39,56 +44,42 @@ const ThemeCard = ({
     void fn();
   };
   return (
-    <div css={{ width: "100%" }}>
-      <div
-        css={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          gap: "0.5rem",
-        }}
-      >
+    <ThemeCardWrapper>
+      <ThemeCardHeader>
         <h2 css={{ marginRight: "auto" }}>{title}</h2>
-        <span>Try this theme in:</span>
-        <Button
-          $borderRadius="lg"
-          $fontWeight="600"
-          $size="sm"
-          onClick={changeHandler("dark")}
-        >
-          Dark
-        </Button>
-        <Button
-          $borderRadius="lg"
-          $fontWeight="600"
-          $size="sm"
-          onClick={changeHandler("light")}
-        >
-          Light
-        </Button>
-        <span>Copy theme name:</span>
-        <Button
-          $borderRadius="lg"
-          $fontWeight="800"
-          $size="sm"
-          onClick={copyNameClickHandler}
-          $variant="outlined"
-        >
-          <span>Copy</span>
-          <ContentCopyRounded fontSize="small" />
-        </Button>
-      </div>
-      <div
-        css={{
-          padding: "0 1rem",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "1rem",
-        }}
-      >
-        {items}
-      </div>
-    </div>
+        <div className="inner">
+          <span>Try this theme in:</span>
+          <Button
+            $borderRadius="lg"
+            $fontWeight="600"
+            $size="sm"
+            onClick={changeHandler("dark")}
+          >
+            Dark
+          </Button>
+          <Button
+            $borderRadius="lg"
+            $fontWeight="600"
+            $size="sm"
+            onClick={changeHandler("light")}
+          >
+            Light
+          </Button>
+          <span>Copy theme name:</span>
+          <Button
+            $borderRadius="lg"
+            $fontWeight="800"
+            $size="sm"
+            onClick={copyNameClickHandler}
+            $variant="outlined"
+          >
+            <span>Copy</span>
+            <ContentCopyRounded fontSize="small" />
+          </Button>
+        </div>
+      </ThemeCardHeader>
+      <ThemeCardBody>{items}</ThemeCardBody>
+    </ThemeCardWrapper>
   );
 };
 

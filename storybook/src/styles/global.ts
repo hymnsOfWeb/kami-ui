@@ -19,4 +19,10 @@ const globalStyles = css`
   }
 `;
 
+export const breakpoints = Object.freeze({
+  desktop: 1024,
+  tablet: 900,
+  mobile: 600,
+} as const);
+
 export default globalStyles;

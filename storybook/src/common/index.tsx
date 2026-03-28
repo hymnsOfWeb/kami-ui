@@ -20,3 +20,5 @@ export const CustomToastContainer = () => (
     transition={Slide}
   />
 );
+
+export { default as styled } from "@emotion/styled";

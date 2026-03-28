@@ -2,7 +2,7 @@ import {
   objectKeysArr,
   shopItemsMapper,
 } from "@stories/introduction/theme-shop/mappers";
-import { loaderCss } from "@stories/introduction/theme-shop/styles";
+import { ComponentWrapper } from "@stories/introduction/theme-shop/styles";
 import { useEffect, useRef, useState } from "react";
 
 const Component = () => {
@@ -32,20 +32,15 @@ const Component = () => {
     };
   }, []);
   return (
-    <div
-      css={{
-        width: "100%",
-        fontFamily: `"Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif`,
-      }}
-    >
+    <ComponentWrapper>
       {objectKeysArr.slice(0, visibleItems).map(shopItemsMapper)}
-      <div css={{ height: "1px", width: "100%" }} ref={observerRef} />
+      <div className="observer" ref={observerRef} />
       {visibleItems !== objectKeysArr.length && (
-        <div css={{ width: "100%", display: "flex" }}>
-          <div className="loader" css={loaderCss} />
+        <div className="loader-wrapper">
+          <div className="loader" />
         </div>
       )}
-    </div>
+    </ComponentWrapper>
   );
 };
 

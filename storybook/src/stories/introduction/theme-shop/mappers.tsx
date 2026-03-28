@@ -1,4 +1,5 @@
 import * as shop from "@kami-ui/theme-shop";
+import { ColorWrapper } from "@stories/introduction/theme-shop/styles";
 import ThemeCard from "@stories/introduction/theme-shop/theme-card";
 import { getThemeName } from "@stories/introduction/theme-shop/utils";
 import { Fragment } from "react";
@@ -50,21 +51,10 @@ export const colorMapper = (colorObject: shop.ColorsObject) => {
     const colorArr = colorObject[colorObjKey as keyof typeof colorObject] ?? [];
     if (!Array.isArray(colorArr)) return null;
     return (
-      <div key={`${colorObjKey}-${index}`}>
+      <ColorWrapper key={`${colorObjKey}-${index}`}>
         <h4>{colorObjKey}</h4>
-        <div
-          css={{
-            width: "100%",
-            display: "flex",
-            border: "2px solid var(--color-background-600)",
-            borderRadius: "8px",
-            overflow: "hidden",
-            height: "50px",
-          }}
-        >
-          {colorArr.map(colorBlockMapper)}
-        </div>
-      </div>
+        <div className="palette-wrapper">{colorArr.map(colorBlockMapper)}</div>
+      </ColorWrapper>
     );
   };
   return mapperFn;
@@ -92,14 +82,7 @@ export const shopItemsMapper = (key: string, index: number) => {
         themeName={key}
         items={items}
       />
-      {objectKeysArr.length - 1 !== index && (
-        <hr
-          css={{
-            margin: "3rem 0 1.5rem 0",
-            border: "1px solid var(--color-background-300)",
-          }}
-        />
-      )}
+      {objectKeysArr.length - 1 !== index && <hr />}
     </Fragment>
   );
 };

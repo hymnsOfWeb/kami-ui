@@ -1,9 +1,7 @@
 import pluginJs from "@eslint/js";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
-// @ts-expect-error -- no types
 import eslintComments from "eslint-plugin-eslint-comments";
-// @ts-expect-error -- no types
 import importPlugin from "eslint-plugin-import";
 import prettier from "eslint-plugin-prettier";
 import globals from "globals";
