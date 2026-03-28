@@ -47,14 +47,14 @@
   },
   "devDependencies": {
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@kami-ui/eslint-config": "workspace:*",
     "@kami-ui/rollup": "workspace:*",
     "@kami-ui/tsconfigs": "workspace:*",
     "@kami-ui/types": "workspace:*",
-    "eslint": "^9.27.0",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "eslint": "^10.1.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "peerDependencies": {
     "@emotion/react": "^11",
@@ -63,6 +63,6 @@
     "react-dom": "^17 || ^18 || ^19"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=20.0.0"
   }
 }

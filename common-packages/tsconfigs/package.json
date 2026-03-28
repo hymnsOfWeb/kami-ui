@@ -10,7 +10,7 @@
     "url": "https://github.com/theGobindSingh"
   },
   "devDependencies": {
-    "@tsconfig/next": "^2.0.3",
-    "@tsconfig/strictest": "^2.0.5"
+    "@tsconfig/next": "^2.0.6",
+    "@tsconfig/strictest": "^2.0.8"
   }
 }

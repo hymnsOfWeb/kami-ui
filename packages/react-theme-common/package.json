@@ -25,15 +25,15 @@
   "dependencies": {
     "@kami-ui/tsconfigs": "workspace:*",
     "@kami-ui/types": "workspace:*",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@kami-ui/eslint-config": "workspace:*",
     "@kami-ui/rollup": "workspace:*",
-    "eslint": "^9.27.0"
+    "eslint": "^10.1.0"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=20.0.0"
   }
 }
