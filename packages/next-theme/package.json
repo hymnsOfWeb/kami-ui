@@ -1,6 +1,6 @@
 {
   "name": "@kami-ui/next-theme",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "A versatile and customizable theme management library for Next.js (pages router)",
   "keywords": [
     "kami-ui",
