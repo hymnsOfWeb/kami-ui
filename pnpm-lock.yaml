@@ -432,6 +432,9 @@ importers:
       '@kami-ui/react-theme':
         specifier: workspace:*
         version: link:../packages/react-theme
+      '@kami-ui/react-theme-common':
+        specifier: workspace:*
+        version: link:../packages/react-theme-common
       '@kami-ui/theme-shop':
         specifier: workspace:*
         version: link:../packages/theme-shop
@@ -464,8 +467,8 @@ importers:
         specifier: workspace:*
         version: link:../common-packages/tsconfigs
       '@kami-ui/types':
-        specifier: ^0.0.3
-        version: 0.0.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: workspace:*
+        version: link:../common-packages/types
       '@storybook/addon-a11y':
         specifier: ^10.3.3
         version: 10.3.3(storybook@10.3.3(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
@@ -1325,13 +1328,6 @@ packages:
 
   '@kami-ui/types@0.0.1':
     resolution: {integrity: sha512-wUrJn34Mp/Vkd0x6AToln8ZBZsot7eB8XVdbYy261IGSVs/wWR7LxlutLS7TCkuZyOuGUkX4rloFFuR2OEgkBg==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      react: 19.2.4
-      react-dom: 19.2.4
-
-  '@kami-ui/types@0.0.3':
-    resolution: {integrity: sha512-W4gYpSSnEmUJGzNh/wFGa/8mf2MNgeIDWKXiEJfRGMXscO5DAP6IZsNmX2NLGoFze719VqGVp6wDcUJ26S35GQ==}
     engines: {node: '>=16'}
     peerDependencies:
       react: 19.2.4
@@ -5406,11 +5402,6 @@ snapshots:
       - react-dom
 
   '@kami-ui/types@0.0.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
-    dependencies:
-      react: 19.2.4
-      react-dom: 19.2.4(react@19.2.4)
-
-  '@kami-ui/types@0.0.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)

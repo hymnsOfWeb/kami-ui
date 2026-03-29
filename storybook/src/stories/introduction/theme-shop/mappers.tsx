@@ -52,7 +52,9 @@ export const colorMapper = (colorObject: shop.ColorsObject) => {
     return (
       <ColorWrapper key={`${colorObjKey}-${index}`}>
         <h4>{colorObjKey}</h4>
-        <div className="palette-wrapper">{colorArr.map(colorBlockMapper)}</div>
+        <div className="palette-wrapper">
+          {colorArr.map(colorBlockMapper as any)}
+        </div>
       </ColorWrapper>
     );
   };

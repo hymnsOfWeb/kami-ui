@@ -6,9 +6,9 @@ import {
   useIsomorphicLayoutEffect,
 } from "@kami-ui/react-theme-common";
 import type { MultiThemeProviderProps } from "@kami-ui/types";
-import { useAmp } from "next/amp";
 import Head from "next/head";
 import { ThemeContext } from "./context";
+import useAmp from "./use-amp";
 
 const PreChildren = ({
   themes,

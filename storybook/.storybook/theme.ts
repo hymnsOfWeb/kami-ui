@@ -6,7 +6,7 @@ const getColorWithCorrectType = (
   key: keyof ColorsObject,
   weight: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9,
 ) => {
-  const color = defaultThemeColors?.[key]?.[weight];
+  const color = (defaultThemeColors?.[key] as string[])?.[weight];
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- needed
   return color || (null as unknown as string);
 };

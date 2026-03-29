@@ -1,7 +1,7 @@
 import { themeBuilder } from "@kami-ui/react-theme-common";
 import type { ThemeProviderProps } from "@kami-ui/types";
-import { useAmp } from "next/amp";
 import Head from "next/head";
+import useAmp from "./use-amp";
 
 export const ThemeProvider = ({
   injectInBody = false,
