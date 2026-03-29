@@ -432,9 +432,6 @@ importers:
       '@kami-ui/react-theme':
         specifier: workspace:*
         version: link:../packages/react-theme
-      '@kami-ui/react-theme-common':
-        specifier: workspace:*
-        version: link:../packages/react-theme-common
       '@kami-ui/theme-shop':
         specifier: workspace:*
         version: link:../packages/theme-shop
