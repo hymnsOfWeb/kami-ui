@@ -33,7 +33,12 @@
       "dependsOn": ["@kami-ui/react-theme-common#build"]
     },
     "@kami-ui/storybook#build": {
-      "dependsOn": ["@kami-ui/next-theme#build"]
+      "dependsOn": [
+        "@kami-ui/next-theme#build",
+        "@kami-ui/react-theme#build",
+        "@kami-ui/theme-shop#build",
+        "@kami-ui/react-theme-common#build"
+      ]
     }
   }
 }
