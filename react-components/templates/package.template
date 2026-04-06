@@ -1,6 +1,6 @@
 {
   "name": "@kami-ui/rc-<COMPONENT_NAME_LOWERCASE_KEBAB>",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Kami-UI <COMPONENT_NAME_TEXT> component for react",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
