@@ -27,12 +27,12 @@ yarn add -D eslint typescript @kami-ui/eslint-config
 
 ## Available presets
 
-| Preset | Import path | Use case |
-| --- | --- | --- |
-| Base | `@kami-ui/eslint-config` or `@kami-ui/eslint-config/base` | Shared packages, libraries, and general TS/JS projects |
-| React | `@kami-ui/eslint-config/react` | React apps and component libraries |
-| Next.js | `@kami-ui/eslint-config/next` | Next.js applications |
-| Storybook | `@kami-ui/eslint-config/storybook` | Projects that also lint Storybook files |
+| Preset    | Import path                                               | Use case                                               |
+| --------- | --------------------------------------------------------- | ------------------------------------------------------ |
+| Base      | `@kami-ui/eslint-config` or `@kami-ui/eslint-config/base` | Shared packages, libraries, and general TS/JS projects |
+| React     | `@kami-ui/eslint-config/react`                            | React apps and component libraries                     |
+| Next.js   | `@kami-ui/eslint-config/next`                             | Next.js applications                                   |
+| Storybook | `@kami-ui/eslint-config/storybook`                        | Projects that also lint Storybook files                |
 
 ## Usage
 
