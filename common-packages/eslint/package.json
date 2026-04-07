@@ -1,13 +1,22 @@
 {
   "name": "@kami-ui/eslint-config",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Kami UI | Eslint configurations",
+  "homepage": "https://github.com/webadeva/kami-ui/tree/main/common-packages/eslint",
+  "main": "main/index.js",
+  "module": "main/index.mjs",
+  "types": "main/index.d.ts",
   "keywords": [],
   "license": "ISC",
   "author": {
     "name": "Gobind Singh",
     "email": "thesinghgobind@gmail.com",
     "url": "https://github.com/theGobindSingh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webadeva/kami-ui.git",
+    "directory": "common-packages/eslint"
   },
   "exports": {
     "./package.json": "./package.json",
@@ -68,11 +77,15 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "eslint": ">=9.0.0"
+    "eslint": ">=9.0.0",
+    "typescript": ">=5.0.0"
   },
   "peerDependenciesMeta": {
     "eslint": {
       "optional": false
+    },
+    "typescript": {
+      "optional": true
     }
   },
   "packageManager": "pnpm@10.33.0"

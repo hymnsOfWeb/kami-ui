@@ -8,22 +8,26 @@ It includes typed TypeScript rules, Prettier integration, and ready-to-use prese
 ### pnpm
 
 ```bash
-pnpm add -D eslint typescript @kami-ui/eslint-config
+pnpm add -D @kami-ui/eslint-config
 ```
 
 ### npm
 
 ```bash
-npm install -D eslint typescript @kami-ui/eslint-config
+npm install -D @kami-ui/eslint-config
 ```
 
 ### Yarn
 
 ```bash
-yarn add -D eslint typescript @kami-ui/eslint-config
+yarn add -D @kami-ui/eslint-config
 ```
 
+## Notes
+
 > This package expects `eslint@>=9` and the flat config format (`eslint.config.js`).
+
+> This package also expects `typescript@>=5` for the type-checked rules to work correctly, but it can be used in JS projects as well (just without the type-aware rules).
 
 ## Available presets
 
@@ -43,7 +47,7 @@ Create an `eslint.config.js` file and spread the preset you want to use.
 ```js
 import config from "@kami-ui/eslint-config";
 
-export default [...config];
+export default config;
 ```
 
 ### React
@@ -51,7 +55,7 @@ export default [...config];
 ```js
 import config from "@kami-ui/eslint-config/react";
 
-export default [...config];
+export default config;
 ```
 
 ### Next.js
@@ -59,7 +63,7 @@ export default [...config];
 ```js
 import config from "@kami-ui/eslint-config/next";
 
-export default [...config];
+export default config;
 ```
 
 ### Storybook
@@ -67,7 +71,7 @@ export default [...config];
 ```js
 import config from "@kami-ui/eslint-config/storybook";
 
-export default [...config];
+export default config;
 ```
 
 ## Custom overrides
