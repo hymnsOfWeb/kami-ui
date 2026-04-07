@@ -4,6 +4,10 @@ const SbThemeInjector = ({ children }: PropsWithChildren<unknown>) => {
   useEffect(() => {
     // If in iframe, inject into parent. If standalone, inject into self.
     const isIframe = window.parent !== window;
+    const appStyleHref = new URL(
+      "./app-styles.css",
+      isIframe ? parent.window.location.href : window.location.href,
+    ).toString();
     let styleElem;
     if (isIframe) {
       styleElem = parent.document.querySelector(
@@ -12,16 +16,16 @@ const SbThemeInjector = ({ children }: PropsWithChildren<unknown>) => {
       if (styleElem) return;
       styleElem = parent.document.createElement("link");
       styleElem.setAttribute("id", "custom-app-style-link");
-      styleElem.setAttribute("rel", "preload stylesheet");
-      styleElem.setAttribute("href", "/app-styles.css");
+      styleElem.setAttribute("rel", "stylesheet");
+      styleElem.setAttribute("href", appStyleHref);
       parent.document.head.appendChild(styleElem);
     } else {
       styleElem = document.head.querySelector("#custom-app-style-link");
       if (styleElem) return;
       styleElem = document.createElement("link");
       styleElem.setAttribute("id", "custom-app-style-link");
-      styleElem.setAttribute("rel", "preload stylesheet");
-      styleElem.setAttribute("href", "/app-styles.css");
+      styleElem.setAttribute("rel", "stylesheet");
+      styleElem.setAttribute("href", appStyleHref);
       document.head.appendChild(styleElem);
     }
   }, []);

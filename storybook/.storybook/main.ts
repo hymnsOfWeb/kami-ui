@@ -2,6 +2,7 @@ import type { StorybookConfig } from "@storybook/react-vite";
 
 import { createRequire } from "module";
 import { dirname, join } from "path";
+import { mergeConfig } from "vite";
 
 const require = createRequire(import.meta.url);
 
@@ -30,5 +31,10 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ["../public"],
+  viteFinal: async (config) => {
+    return mergeConfig(config, {
+      base: process.env.PUBLIC_BASE_PATH ?? "/",
+    });
+  },
 };
 export default config;
