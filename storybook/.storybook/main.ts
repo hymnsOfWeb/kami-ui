@@ -31,6 +31,7 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ["../public"],
+  // eslint-disable-next-line @typescript-eslint/require-await -- IGNORE
   viteFinal: async (config) => {
     return mergeConfig(config, {
       base: process.env.PUBLIC_BASE_PATH ?? "/",
