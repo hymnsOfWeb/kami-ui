@@ -1,5 +1,5 @@
 {
-  "extends": "@kami-ui/tsconfigs/base.tsconfig.json",
+  "extends": "@kami-ui/tsconfigs/react.tsconfig.json",
   "include": ["src", "src/**/*/*.{ts,tsx,js,jsx}"],
   "compilerOptions": {
     "lib": ["dom"]
